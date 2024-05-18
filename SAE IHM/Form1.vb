@@ -9,4 +9,12 @@
             Me.Show()
         End If
     End Sub
+
+    Private Sub ComboBoxNom_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxNom.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub BtnTableauScore_Click(sender As Object, e As EventArgs) Handles BtnTableauScore.Click
+
+    End Sub
 End Class
