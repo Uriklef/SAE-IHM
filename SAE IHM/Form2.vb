@@ -17,17 +17,30 @@ Public Class Form2
         tempsMax = 7 * 60
         Timer.Start()
         ActualisationLabel()
+
+        Dim index As Integer
+        For index = 1 To 81
+            Dim txtBox As TextBox = CType(Me.Controls("TextBox" & index.ToString()), TextBox)
+            txtBox.Enabled = True
+            txtBox.Text = ""
+        Next
     End Sub
 
     Private Sub ActualisationLabel()
         Dim minutes As Integer = tempsMax \ 60
-        Dim seconds As Integer = tempsMax Mod 60
-        labelMinuteur.Text = String.Format("{0:00}:{1:00}", minutes, seconds)
+        Dim secondes As Integer = tempsMax Mod 60
+        labelMinuteur.Text = String.Format("{0:00}:{1:00}", minutes, secondes)
     End Sub
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Timer.Interval = 1000
         ActualisationLabel()
+
+        Dim index As Integer
+        For index = 1 To 81
+            Dim txtBox As TextBox = CType(Me.Controls("TextBox" & index.ToString()), TextBox)
+            txtBox.Enabled = False
+        Next
     End Sub
 
     Private Sub BtnQuitter_Click(sender As Object, e As EventArgs) Handles BtnQuitter.Click

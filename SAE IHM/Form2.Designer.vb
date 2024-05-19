@@ -110,7 +110,6 @@ Partial Class Form2
         Me.BtnNouvellePartie = New System.Windows.Forms.Button()
         Me.BtnIndice = New System.Windows.Forms.Button()
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.labelMinuteur = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
@@ -974,15 +973,6 @@ Partial Class Form2
         'Timer
         '
         '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(0, 0)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(39, 13)
-        Me.Label1.TabIndex = 86
-        Me.Label1.Text = "Label1"
-        '
         'labelMinuteur
         '
         Me.labelMinuteur.AutoSize = True
@@ -999,7 +989,6 @@ Partial Class Form2
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(779, 472)
         Me.Controls.Add(Me.labelMinuteur)
-        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.BtnIndice)
         Me.Controls.Add(Me.BtnNouvellePartie)
         Me.Controls.Add(Me.LblNombreErreurs)
@@ -1180,6 +1169,5 @@ Partial Class Form2
     Friend WithEvents BtnNouvellePartie As Button
     Friend WithEvents BtnIndice As Button
     Friend WithEvents Timer As Timer
-    Friend WithEvents Label1 As Label
     Friend WithEvents labelMinuteur As Label
 End Class
