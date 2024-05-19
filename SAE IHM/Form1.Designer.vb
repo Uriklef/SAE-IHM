@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Form1
     Inherits System.Windows.Forms.Form
 
     'Form remplace la méthode Dispose pour nettoyer la liste des composants.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,80 +20,141 @@ Partial Class Form1
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée à l'aide du Concepteur Windows Form.  
     'Ne la modifiez pas à l'aide de l'éditeur de code.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.btnQuitter = New System.Windows.Forms.Button()
-        Me.LblChoisirNom = New System.Windows.Forms.Label()
-        Me.ComboBoxNom = New System.Windows.Forms.ComboBox()
-        Me.BtnTableauScore = New System.Windows.Forms.Button()
-        Me.BtnLancerPartie = New System.Windows.Forms.Button()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
+        Me.LRegle = New System.Windows.Forms.Label()
+        Me.LTitre = New System.Windows.Forms.Label()
+        Me.BRetour = New System.Windows.Forms.Button()
+        Me.LScores = New System.Windows.Forms.Label()
+        Me.PMenu = New System.Windows.Forms.Panel()
+        Me.BLeave = New System.Windows.Forms.Button()
+        Me.BRegle = New System.Windows.Forms.Button()
+        Me.BLeaderBoard = New System.Windows.Forms.Button()
+        Me.BJouer = New System.Windows.Forms.Button()
+        Me.PMenu.SuspendLayout()
         Me.SuspendLayout()
         '
-        'btnQuitter
+        'LRegle
         '
-        Me.btnQuitter.Location = New System.Drawing.Point(25, 211)
-        Me.btnQuitter.Name = "btnQuitter"
-        Me.btnQuitter.Size = New System.Drawing.Size(136, 61)
-        Me.btnQuitter.TabIndex = 0
-        Me.btnQuitter.Text = "Quitter l'application"
-        Me.btnQuitter.UseVisualStyleBackColor = True
+        Me.LRegle.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LRegle.Location = New System.Drawing.Point(53, 186)
+        Me.LRegle.Name = "LRegle"
+        Me.LRegle.Size = New System.Drawing.Size(800, 200)
+        Me.LRegle.TabIndex = 3
+        Me.LRegle.Text = resources.GetString("LRegle.Text")
         '
-        'LblChoisirNom
+        'LTitre
         '
-        Me.LblChoisirNom.AutoSize = True
-        Me.LblChoisirNom.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblChoisirNom.Location = New System.Drawing.Point(22, 55)
-        Me.LblChoisirNom.Name = "LblChoisirNom"
-        Me.LblChoisirNom.Size = New System.Drawing.Size(158, 16)
-        Me.LblChoisirNom.TabIndex = 1
-        Me.LblChoisirNom.Text = "Saisissez votre nom : "
+        Me.LTitre.AutoSize = True
+        Me.LTitre.Font = New System.Drawing.Font("Papyrus", 28.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LTitre.Location = New System.Drawing.Point(277, 60)
+        Me.LTitre.Name = "LTitre"
+        Me.LTitre.Size = New System.Drawing.Size(321, 74)
+        Me.LTitre.TabIndex = 2
+        Me.LTitre.Text = "SUDOKU"
+        Me.LTitre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'ComboBoxNom
+        'BRetour
         '
-        Me.ComboBoxNom.FormattingEnabled = True
-        Me.ComboBoxNom.Location = New System.Drawing.Point(232, 55)
-        Me.ComboBoxNom.Name = "ComboBoxNom"
-        Me.ComboBoxNom.Size = New System.Drawing.Size(183, 21)
-        Me.ComboBoxNom.TabIndex = 2
+        Me.BRetour.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BRetour.Location = New System.Drawing.Point(57, 503)
+        Me.BRetour.Name = "BRetour"
+        Me.BRetour.Size = New System.Drawing.Size(125, 44)
+        Me.BRetour.TabIndex = 8
+        Me.BRetour.Text = "Retour"
+        Me.BRetour.UseVisualStyleBackColor = True
         '
-        'BtnTableauScore
+        'LScores
         '
-        Me.BtnTableauScore.Location = New System.Drawing.Point(25, 114)
-        Me.BtnTableauScore.Name = "BtnTableauScore"
-        Me.BtnTableauScore.Size = New System.Drawing.Size(136, 61)
-        Me.BtnTableauScore.TabIndex = 3
-        Me.BtnTableauScore.Text = "Tableau des scores"
-        Me.BtnTableauScore.UseVisualStyleBackColor = True
+        Me.LScores.AutoSize = True
+        Me.LScores.Cursor = System.Windows.Forms.Cursors.Default
+        Me.LScores.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LScores.Location = New System.Drawing.Point(361, 186)
+        Me.LScores.Name = "LScores"
+        Me.LScores.Size = New System.Drawing.Size(160, 29)
+        Me.LScores.TabIndex = 9
+        Me.LScores.Text = "Coming Soon"
         '
-        'BtnLancerPartie
+        'PMenu
         '
-        Me.BtnLancerPartie.Location = New System.Drawing.Point(232, 146)
-        Me.BtnLancerPartie.Name = "BtnLancerPartie"
-        Me.BtnLancerPartie.Size = New System.Drawing.Size(183, 90)
-        Me.BtnLancerPartie.TabIndex = 4
-        Me.BtnLancerPartie.Text = "Lancer une nouvelle partie"
-        Me.BtnLancerPartie.UseVisualStyleBackColor = True
+        Me.PMenu.BackColor = System.Drawing.Color.Transparent
+        Me.PMenu.Controls.Add(Me.BLeave)
+        Me.PMenu.Controls.Add(Me.BRegle)
+        Me.PMenu.Controls.Add(Me.BLeaderBoard)
+        Me.PMenu.Controls.Add(Me.BJouer)
+        Me.PMenu.Cursor = System.Windows.Forms.Cursors.Default
+        Me.PMenu.Location = New System.Drawing.Point(300, 170)
+        Me.PMenu.Name = "PMenu"
+        Me.PMenu.Size = New System.Drawing.Size(286, 328)
+        Me.PMenu.TabIndex = 10
+        '
+        'BLeave
+        '
+        Me.BLeave.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BLeave.Location = New System.Drawing.Point(53, 254)
+        Me.BLeave.Name = "BLeave"
+        Me.BLeave.Size = New System.Drawing.Size(183, 58)
+        Me.BLeave.TabIndex = 8
+        Me.BLeave.Text = "Quitter"
+        Me.BLeave.UseVisualStyleBackColor = True
+        '
+        'BRegle
+        '
+        Me.BRegle.Cursor = System.Windows.Forms.Cursors.Default
+        Me.BRegle.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BRegle.Location = New System.Drawing.Point(53, 176)
+        Me.BRegle.Name = "BRegle"
+        Me.BRegle.Size = New System.Drawing.Size(183, 58)
+        Me.BRegle.TabIndex = 6
+        Me.BRegle.Text = "Règles"
+        Me.BRegle.UseVisualStyleBackColor = True
+        '
+        'BLeaderBoard
+        '
+        Me.BLeaderBoard.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BLeaderBoard.Location = New System.Drawing.Point(53, 91)
+        Me.BLeaderBoard.Name = "BLeaderBoard"
+        Me.BLeaderBoard.Size = New System.Drawing.Size(183, 62)
+        Me.BLeaderBoard.TabIndex = 5
+        Me.BLeaderBoard.Text = "Tableau des scores"
+        Me.BLeaderBoard.UseVisualStyleBackColor = True
+        '
+        'BJouer
+        '
+        Me.BJouer.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BJouer.Location = New System.Drawing.Point(53, 13)
+        Me.BJouer.Name = "BJouer"
+        Me.BJouer.Size = New System.Drawing.Size(183, 52)
+        Me.BJouer.TabIndex = 4
+        Me.BJouer.Text = "Lancer une partie"
+        Me.BJouer.UseVisualStyleBackColor = True
         '
         'Form1
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(497, 327)
-        Me.Controls.Add(Me.BtnLancerPartie)
-        Me.Controls.Add(Me.BtnTableauScore)
-        Me.Controls.Add(Me.ComboBoxNom)
-        Me.Controls.Add(Me.LblChoisirNom)
-        Me.Controls.Add(Me.btnQuitter)
+        Me.ClientSize = New System.Drawing.Size(919, 559)
+        Me.Controls.Add(Me.PMenu)
+        Me.Controls.Add(Me.LScores)
+        Me.Controls.Add(Me.BRetour)
+        Me.Controls.Add(Me.LRegle)
+        Me.Controls.Add(Me.LTitre)
         Me.Name = "Form1"
         Me.Text = "Form1"
+        Me.PMenu.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents btnQuitter As Button
-    Friend WithEvents LblChoisirNom As Label
-    Friend WithEvents ComboBoxNom As ComboBox
-    Friend WithEvents BtnTableauScore As Button
-    Friend WithEvents BtnLancerPartie As Button
+    Friend WithEvents LRegle As Label
+    Friend WithEvents LTitre As Label
+    Friend WithEvents BRetour As Button
+    Friend WithEvents LScores As Label
+    Friend WithEvents PMenu As Panel
+    Friend WithEvents BLeave As Button
+    Friend WithEvents BRegle As Button
+    Friend WithEvents BLeaderBoard As Button
+    Friend WithEvents BJouer As Button
 End Class

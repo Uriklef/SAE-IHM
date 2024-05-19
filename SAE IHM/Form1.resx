@@ -117,4 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="LRegle.Text" xml:space="preserve">
+    <value>Sudoku est joué sur une grille de 9 x 9 espaces. Dans les lignes et les colonnes sont 9 "carrés" (composé de 3 x 3 espaces). Chaque rangée, colonne et carré (9 espaces chacun) doit être rempli avec les numéros 1-9, sans répéter aucun nombre dans la rangée, la colonne ou le carré. Sudoku est un jeu de logique et de raisonnement, donc vous ne devriez pas avoir à deviner. Si vous ne savez pas quel numéro mettre dans un certain espace, continuer à numériser les autres zones de la grille jusqu'à ce que vous avez vu l'occasion de placer un nombre. Mais n'essayez pas de "forcer" quoi que ce soit-Sudoku récompenses patience, des idées, et la reconnaissance des modèles, pas de chance aveugle ou deviner.</value>
+  </data>
 </root>
