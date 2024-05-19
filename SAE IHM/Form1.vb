@@ -42,4 +42,10 @@
         BRetour.Show()
         LTitre.Text = "SCORES"
     End Sub
+
+    Private Sub BJouer_Click(sender As Object, e As EventArgs) Handles BJouer.Click
+        Dim formulaireJeu As New Form2()
+        formulaireJeu.Show()
+        Me.Hide()
+    End Sub
 End Class

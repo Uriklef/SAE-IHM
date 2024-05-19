@@ -38,9 +38,10 @@ Partial Class Form1
         'LRegle
         '
         Me.LRegle.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LRegle.Location = New System.Drawing.Point(53, 186)
+        Me.LRegle.Location = New System.Drawing.Point(40, 151)
+        Me.LRegle.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LRegle.Name = "LRegle"
-        Me.LRegle.Size = New System.Drawing.Size(800, 200)
+        Me.LRegle.Size = New System.Drawing.Size(600, 162)
         Me.LRegle.TabIndex = 3
         Me.LRegle.Text = resources.GetString("LRegle.Text")
         '
@@ -48,9 +49,10 @@ Partial Class Form1
         '
         Me.LTitre.AutoSize = True
         Me.LTitre.Font = New System.Drawing.Font("Papyrus", 28.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LTitre.Location = New System.Drawing.Point(277, 60)
+        Me.LTitre.Location = New System.Drawing.Point(208, 49)
+        Me.LTitre.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LTitre.Name = "LTitre"
-        Me.LTitre.Size = New System.Drawing.Size(321, 74)
+        Me.LTitre.Size = New System.Drawing.Size(259, 60)
         Me.LTitre.TabIndex = 2
         Me.LTitre.Text = "SUDOKU"
         Me.LTitre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -58,9 +60,10 @@ Partial Class Form1
         'BRetour
         '
         Me.BRetour.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BRetour.Location = New System.Drawing.Point(57, 503)
+        Me.BRetour.Location = New System.Drawing.Point(43, 409)
+        Me.BRetour.Margin = New System.Windows.Forms.Padding(2)
         Me.BRetour.Name = "BRetour"
-        Me.BRetour.Size = New System.Drawing.Size(125, 44)
+        Me.BRetour.Size = New System.Drawing.Size(94, 36)
         Me.BRetour.TabIndex = 8
         Me.BRetour.Text = "Retour"
         Me.BRetour.UseVisualStyleBackColor = True
@@ -70,9 +73,10 @@ Partial Class Form1
         Me.LScores.AutoSize = True
         Me.LScores.Cursor = System.Windows.Forms.Cursors.Default
         Me.LScores.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LScores.Location = New System.Drawing.Point(361, 186)
+        Me.LScores.Location = New System.Drawing.Point(271, 151)
+        Me.LScores.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LScores.Name = "LScores"
-        Me.LScores.Size = New System.Drawing.Size(160, 29)
+        Me.LScores.Size = New System.Drawing.Size(126, 24)
         Me.LScores.TabIndex = 9
         Me.LScores.Text = "Coming Soon"
         '
@@ -84,17 +88,19 @@ Partial Class Form1
         Me.PMenu.Controls.Add(Me.BLeaderBoard)
         Me.PMenu.Controls.Add(Me.BJouer)
         Me.PMenu.Cursor = System.Windows.Forms.Cursors.Default
-        Me.PMenu.Location = New System.Drawing.Point(300, 170)
+        Me.PMenu.Location = New System.Drawing.Point(225, 138)
+        Me.PMenu.Margin = New System.Windows.Forms.Padding(2)
         Me.PMenu.Name = "PMenu"
-        Me.PMenu.Size = New System.Drawing.Size(286, 328)
+        Me.PMenu.Size = New System.Drawing.Size(214, 266)
         Me.PMenu.TabIndex = 10
         '
         'BLeave
         '
         Me.BLeave.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BLeave.Location = New System.Drawing.Point(53, 254)
+        Me.BLeave.Location = New System.Drawing.Point(40, 206)
+        Me.BLeave.Margin = New System.Windows.Forms.Padding(2)
         Me.BLeave.Name = "BLeave"
-        Me.BLeave.Size = New System.Drawing.Size(183, 58)
+        Me.BLeave.Size = New System.Drawing.Size(137, 47)
         Me.BLeave.TabIndex = 8
         Me.BLeave.Text = "Quitter"
         Me.BLeave.UseVisualStyleBackColor = True
@@ -103,9 +109,10 @@ Partial Class Form1
         '
         Me.BRegle.Cursor = System.Windows.Forms.Cursors.Default
         Me.BRegle.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BRegle.Location = New System.Drawing.Point(53, 176)
+        Me.BRegle.Location = New System.Drawing.Point(40, 143)
+        Me.BRegle.Margin = New System.Windows.Forms.Padding(2)
         Me.BRegle.Name = "BRegle"
-        Me.BRegle.Size = New System.Drawing.Size(183, 58)
+        Me.BRegle.Size = New System.Drawing.Size(137, 47)
         Me.BRegle.TabIndex = 6
         Me.BRegle.Text = "Règles"
         Me.BRegle.UseVisualStyleBackColor = True
@@ -113,9 +120,10 @@ Partial Class Form1
         'BLeaderBoard
         '
         Me.BLeaderBoard.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BLeaderBoard.Location = New System.Drawing.Point(53, 91)
+        Me.BLeaderBoard.Location = New System.Drawing.Point(40, 74)
+        Me.BLeaderBoard.Margin = New System.Windows.Forms.Padding(2)
         Me.BLeaderBoard.Name = "BLeaderBoard"
-        Me.BLeaderBoard.Size = New System.Drawing.Size(183, 62)
+        Me.BLeaderBoard.Size = New System.Drawing.Size(137, 50)
         Me.BLeaderBoard.TabIndex = 5
         Me.BLeaderBoard.Text = "Tableau des scores"
         Me.BLeaderBoard.UseVisualStyleBackColor = True
@@ -123,23 +131,25 @@ Partial Class Form1
         'BJouer
         '
         Me.BJouer.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BJouer.Location = New System.Drawing.Point(53, 13)
+        Me.BJouer.Location = New System.Drawing.Point(40, 11)
+        Me.BJouer.Margin = New System.Windows.Forms.Padding(2)
         Me.BJouer.Name = "BJouer"
-        Me.BJouer.Size = New System.Drawing.Size(183, 52)
+        Me.BJouer.Size = New System.Drawing.Size(137, 42)
         Me.BJouer.TabIndex = 4
         Me.BJouer.Text = "Lancer une partie"
         Me.BJouer.UseVisualStyleBackColor = True
         '
         'Form1
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(919, 559)
+        Me.ClientSize = New System.Drawing.Size(689, 454)
         Me.Controls.Add(Me.PMenu)
         Me.Controls.Add(Me.LScores)
         Me.Controls.Add(Me.BRetour)
         Me.Controls.Add(Me.LRegle)
         Me.Controls.Add(Me.LTitre)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "Form1"
         Me.Text = "Form1"
         Me.PMenu.ResumeLayout(False)
