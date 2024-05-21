@@ -1,8 +1,9 @@
-﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Header
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Header
 
 Public Class Form2
 
     Dim tempsMax As Integer = 7 * 60
+    Dim partieActive As Boolean
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
         If tempsMax > 0 Then
             tempsMax -= 1
@@ -14,6 +15,18 @@ Public Class Form2
     End Sub
 
     Private Sub BtnNouvellePartie_Click(sender As Object, e As EventArgs) Handles BtnNouvellePartie.Click
+        If partieActive = True Then
+            Dim resultat As MsgBoxResult = MsgBox("Etes vous sur de vouloir relancer une partie ?", vbYesNo)
+            If resultat = MsgBoxResult.Yes Then
+                LancerPartie()
+            End If
+        Else
+            LancerPartie()
+        End If
+    End Sub
+
+    Private Sub LancerPartie()
+        partieActive = True
         tempsMax = 7 * 60
         Timer.Start()
         ActualisationLabel()
