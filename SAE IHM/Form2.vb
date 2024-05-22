@@ -65,13 +65,12 @@ Public Class Form2
         Dim resultat As MsgBoxResult = MsgBox("Voulez vous vraiment quitter ?", vbYesNo)
         If resultat = MsgBoxResult.Yes Then
             Me.Close()
-            Dim form1 As New Form1()
-            form1.Show()
+            Form1.Show()
         End If
     End Sub
 
     Private Sub TextBox_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Not Char.IsDigit(e.KeyChar) Then
+        If Not Char.IsDigit(e.KeyChar) AndAlso e.KeyChar <> vbBack Then
             e.Handled = True
         End If
     End Sub
