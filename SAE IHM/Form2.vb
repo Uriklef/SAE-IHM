@@ -56,9 +56,8 @@ Public Class Form2
             txtBox.Enabled = False
             txtBox.MaxLength = 1
             AddHandler txtBox.KeyPress, AddressOf TextBox_KeyPress
+            AddHandler txtBox.Click, AddressOf TextBox_Click
         Next
-
-
     End Sub
 
     Private Sub BtnQuitter_Click(sender As Object, e As EventArgs) Handles BtnQuitter.Click
@@ -73,6 +72,36 @@ Public Class Form2
         If Not Char.IsDigit(e.KeyChar) AndAlso e.KeyChar <> vbBack Then
             e.Handled = True
         End If
+    End Sub
+
+    Private Sub BtnIndice_Click(sender As Object, e As EventArgs) Handles BtnIndice.Click
+        If partieActive = False Then
+            MessageBox.Show("Il faut lancer une partie pour avoir accès à un indice")
+        End If
+    End Sub
+
+    Private Sub TextBox_Click(sender As Object, e As EventArgs)
+        Dim clickedTextBox As TextBox = DirectCast(sender, TextBox)
+
+        Dim TextBoxSelectionnee As TextBox = DirectCast(sender, TextBox)
+        Dim referenceTop As Integer = TextBoxSelectionnee.Top
+        Dim referenceLeft As Integer = TextBoxSelectionnee.Left
+
+        For Each ctrl As Control In Me.Controls
+            If TypeOf ctrl Is TextBox Then
+                Dim txtBox As TextBox = DirectCast(ctrl, TextBox)
+                txtBox.BackColor = SystemColors.Window
+            End If
+        Next
+
+        For Each ctrl As Control In Me.Controls
+            If TypeOf ctrl Is TextBox Then
+                Dim txtBox As TextBox = DirectCast(ctrl, TextBox)
+                If txtBox.Top = referenceTop OrElse txtBox.Left = referenceLeft Then
+                    txtBox.BackColor = Color.LightBlue
+                End If
+            End If
+        Next
     End Sub
 
 End Class
