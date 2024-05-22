@@ -4,6 +4,7 @@ Public Class Form2
 
     Dim tempsMax As Integer = 7 * 60
     Dim partieActive As Boolean
+
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
         If tempsMax > 0 Then
             tempsMax -= 1
@@ -53,7 +54,11 @@ Public Class Form2
         For index = 1 To 81
             Dim txtBox As TextBox = CType(Me.Controls("TextBox" & index.ToString()), TextBox)
             txtBox.Enabled = False
+            txtBox.MaxLength = 1
+            AddHandler txtBox.KeyPress, AddressOf TextBox_KeyPress
         Next
+
+
     End Sub
 
     Private Sub BtnQuitter_Click(sender As Object, e As EventArgs) Handles BtnQuitter.Click
@@ -64,4 +69,11 @@ Public Class Form2
             form1.Show()
         End If
     End Sub
+
+    Private Sub TextBox_KeyPress(sender As Object, e As KeyPressEventArgs)
+        If Not Char.IsDigit(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
+
 End Class
