@@ -4,6 +4,7 @@ Public Class Form2
 
     Dim tempsMax As Integer = 7 * 60
     Dim partieActive As Boolean
+    Dim currentJoueur As String
 
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
         If tempsMax > 0 Then
@@ -27,17 +28,25 @@ Public Class Form2
     End Sub
 
     Private Sub LancerPartie()
-        partieActive = True
-        tempsMax = 7 * 60
-        Timer.Start()
-        ActualisationLabel()
+        currentJoueur = InputBox("Saisissez votre nom")
+        If currentJoueur = "" Then
+            MsgBox("Vous avez cliqué sur Annuler ou n'avez rien saisi.", vbExclamation, "Annulation")
+            partieActive = False
+        Else
+            partieActive = True
+            BtnTerminer.Enabled = True
+            tempsMax = 7 * 60
+            Timer.Start()
+            ActualisationLabel()
 
-        Dim index As Integer
-        For index = 1 To 81
-            Dim txtBox As TextBox = CType(Me.Controls("TextBox" & index.ToString()), TextBox)
-            txtBox.Enabled = True
-            txtBox.Text = ""
-        Next
+            Dim index As Integer
+            For index = 1 To 81
+                Dim txtBox As TextBox = CType(Me.Controls("TextBox" & index.ToString()), TextBox)
+                txtBox.Enabled = True
+                txtBox.Text = ""
+            Next
+        End If
+
     End Sub
 
     Private Sub ActualisationLabel()
@@ -49,6 +58,8 @@ Public Class Form2
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Timer.Interval = 1000
         ActualisationLabel()
+
+        BtnTerminer.Enabled = False
 
         Dim index As Integer
         For index = 1 To 81
@@ -98,11 +109,31 @@ Public Class Form2
             If TypeOf ctrl Is TextBox Then
                 Dim txtBox As TextBox = DirectCast(ctrl, TextBox)
                 If txtBox.Top = referenceTop OrElse txtBox.Left = referenceLeft Then
-                    txtBox.BackColor = Color.LightGray
+                    txtBox.BackColor = Color.LightBlue
                 End If
             End If
         Next
-        clickedTextBox.BackColor = Color.LightBlue
     End Sub
 
+    Private Sub BtnTerminer_Click(sender As Object, e As EventArgs) Handles BtnTerminer.Click
+        For index As Integer = 1 To 81
+            Dim txtBox As TextBox = CType(Me.Controls("TextBox" & index.ToString()), TextBox)
+            If txtBox.Text = "" OrElse txtBox.ForeColor = Color.Red Then
+                MsgBox("Grille imcomplète ou possède des erreurs")
+                Exit Sub
+            End If
+        Next
+
+        Dim score As New Score With {
+            .Nom = currentJoueur,
+            .Temps = labelMinuteur.Text
+        }
+        scores.SetValue(score, nbEnregistrement)
+        nbEnregistrement += 1
+
+        MsgBox("Felicitation " & currentJoueur & " ,tu remportes la partie !")
+        Timer.Stop()
+        BtnTerminer.Enabled = False
+
+    End Sub
 End Class
