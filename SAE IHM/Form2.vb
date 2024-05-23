@@ -98,10 +98,11 @@ Public Class Form2
             If TypeOf ctrl Is TextBox Then
                 Dim txtBox As TextBox = DirectCast(ctrl, TextBox)
                 If txtBox.Top = referenceTop OrElse txtBox.Left = referenceLeft Then
-                    txtBox.BackColor = Color.LightBlue
+                    txtBox.BackColor = Color.LightGray
                 End If
             End If
         Next
+        clickedTextBox.BackColor = Color.LightBlue
     End Sub
 
 End Class
