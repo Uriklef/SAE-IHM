@@ -69,7 +69,6 @@ Public Class Form2
         Dim resultat As MsgBoxResult = MsgBox("Voulez vous vraiment quitter ?", vbYesNo)
         If resultat = MsgBoxResult.Yes Then
             Me.Close()
-            Form1.Refresh()
             Form1.Show()
         End If
     End Sub
@@ -118,6 +117,13 @@ Public Class Form2
                 Exit Sub
             End If
         Next
+
+        Dim score As New Score With {
+            .Nom = currentJoueur,
+            .Temps = labelMinuteur.Text
+        }
+        scores.SetValue(score, nbEnregistrement)
+        nbEnregistrement += 1
 
         MsgBox("Felicitation " & currentJoueur & " ,tu remportes la partie !")
         Timer.Stop()
