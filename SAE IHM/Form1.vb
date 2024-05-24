@@ -13,7 +13,7 @@
         LBNoms.Items.Clear()
         LBMeilleursScores.Items.Clear()
         If nbEnregistrement = 0 Then
-            LScores.Text = LScores.Text & "Aucun joueur enregistrer"
+            LScores.Text = LScores.Text & "Aucun joueur enregistré"
         Else
             For i As Integer = 0 To nbEnregistrement - 1
                 Dim score As Score = scores.GetValue(i)
