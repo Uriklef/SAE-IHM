@@ -28,7 +28,7 @@ Public Class Form2
     End Sub
 
     Private Sub LancerPartie()
-        currentJoueur = InputBox("Saisissez votre nom")
+        currentJoueur = InputBox("Saisissez votre nom", vbOKCancel)
         If currentJoueur = "" Then
             MsgBox("Vous avez cliqué sur Annuler ou n'avez rien saisi.", vbExclamation, "Annulation")
             partieActive = False
@@ -124,16 +124,29 @@ Public Class Form2
             End If
         Next
 
-        Dim score As New Score With {
-            .Nom = currentJoueur,
-            .Temps = labelMinuteur.Text
-        }
-        scores.SetValue(score, nbEnregistrement)
-        nbEnregistrement += 1
-
         MsgBox("Felicitation " & currentJoueur & " ,tu remportes la partie !")
         Timer.Stop()
         BtnTerminer.Enabled = False
 
+        Dim nvScore As New Score With {
+            .Nom = currentJoueur.ToUpper(),
+            .MeilleurTemps = (7 * 60 - tempsMax),
+            .CumulTemps = .MeilleurTemps,
+            .NbParties = 1
+        }
+
+        For i As Integer = 0 To nbEnregistrement - 1
+            Dim s As Score = scores.GetValue(i)
+            If s.Nom = nvScore.Nom.ToUpper Then
+                s.SetTemps(nvScore.MeilleurTemps)
+                s.CumulTemps += nvScore.CumulTemps
+                s.NbParties += 1
+                scores.SetValue(s, i)
+                Exit Sub
+            End If
+        Next
+
+        scores.SetValue(nvScore, nbEnregistrement)
+        nbEnregistrement += 1
     End Sub
 End Class

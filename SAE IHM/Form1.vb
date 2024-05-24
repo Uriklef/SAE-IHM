@@ -18,7 +18,13 @@
             For i As Integer = 0 To nbEnregistrement - 1
                 Dim score As Score = scores.GetValue(i)
                 LBNoms.Items.Add(score.Nom)
-                LBMeilleursScores.Items.Add(score.Temps)
+                If Not CBNoms.Items.Contains(score.Nom) Then
+                    CBNoms.Items.Add(score.Nom)
+                End If
+                Dim minutes As Integer = score.MeilleurTemps / 60
+                Dim secondes As Integer = score.MeilleurTemps Mod 60
+                Dim temps As String = minutes.ToString & ":" & secondes.ToString
+                LBMeilleursScores.Items.Add(temps)
             Next
         End If
     End Sub
@@ -67,13 +73,6 @@
         Me.Hide()
     End Sub
 
-    Private Sub LB_SelectedIndexChanged(sender As Object, e As EventArgs) Handles LBNoms.SelectedIndexChanged, LBMeilleursScores.SelectedIndexChanged
-        LBNoms.SelectedIndex = sender.SelectedIndex
-        LBMeilleursScores.SelectedIndex = sender.SelectedIndex
-        LBNoms.TopIndex = LBNoms.SelectedIndex
-        LBMeilleursScores.TopIndex = LBMeilleursScores.SelectedIndex
-    End Sub
-
     Private Sub BTrierNoms_Click(sender As Object, e As EventArgs) Handles BTrierNoms.Click
         Dim items1 As List(Of String) = LBNoms.Items.Cast(Of String)().ToList()
         Dim items2 As List(Of String) = LBMeilleursScores.Items.Cast(Of String)().ToList()
@@ -87,5 +86,60 @@
             LBNoms.Items.Add(pair.Key)
             LBMeilleursScores.Items.Add(pair.Value)
         Next
+    End Sub
+
+    Private Sub BTriScore_Click(sender As Object, e As EventArgs) Handles BTriScore.Click
+        Dim items1 As List(Of String) = LBMeilleursScores.Items.Cast(Of String)().ToList()
+        Dim items2 As List(Of String) = LBNoms.Items.Cast(Of String)().ToList()
+        Dim pairedItems As List(Of KeyValuePair(Of String, String)) = items1.Zip(items2, Function(a, b) New KeyValuePair(Of String, String)(a, b)).ToList()
+        pairedItems.Sort(Function(x, y) x.Key.CompareTo(y.Key))
+
+        LBNoms.Items.Clear()
+        LBMeilleursScores.Items.Clear()
+
+        For Each pair As KeyValuePair(Of String, String) In pairedItems
+            LBMeilleursScores.Items.Add(pair.Key)
+            LBNoms.Items.Add(pair.Value)
+        Next
+    End Sub
+
+    Private Sub CBNoms_KeyPress(sender As Object, e As KeyPressEventArgs)
+        If Char.IsDigit(e.KeyChar) And e.KeyChar <> vbBack Then
+            e.Handled = True
+        End If
+        e.KeyChar = Char.ToUpper(e.KeyChar)
+    End Sub
+
+    Private Sub LBNoms_SelectedIndexChanged(sender As Object, e As EventArgs) Handles LBNoms.SelectedIndexChanged, LBMeilleursScores.SelectedIndexChanged
+        LBMeilleursScores.SelectedIndex = sender.SelectedIndex
+        LBNoms.SelectedIndex = sender.SelectedIndex
+    End Sub
+
+    Private Sub BStats_Click(sender As Object, e As EventArgs) Handles BStats.Click
+        For i As Integer = 0 To nbEnregistrement - 1
+            Dim s As Score = scores.GetValue(i)
+            If s.Nom = LBNoms.SelectedItem Then
+                Dim minutes As Integer = s.MeilleurTemps / 60
+                Dim secondes As Integer = s.MeilleurTemps Mod 60
+                Dim meilleurTemps As String = minutes.ToString & ":" & secondes.ToString
+                minutes = s.CumulTemps / 60
+                secondes = s.CumulTemps Mod 60
+                Dim cumulTemps As String = minutes.ToString & ":" & secondes.ToString
+                MsgBox("Nom du joueur : " & s.Nom & vbCr & "Meilleur temps : " & meilleurTemps & vbCr & "Nombre de parties jouer : " & s.NbParties & vbCr & "Cumul du temps de jeu écoulé : " & cumulTemps)
+                Exit Sub
+            End If
+        Next
+    End Sub
+
+    Private Sub CBNoms_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBNoms.SelectedIndexChanged, LBNoms.SelectedIndexChanged
+        LBNoms.SelectedItem = sender.SelectedItem
+        CBNoms.SelectedText = sender.SelectedItem
+    End Sub
+
+    Private Sub CBNoms_KeyPress_1(sender As Object, e As KeyPressEventArgs) Handles CBNoms.KeyPress
+        If Char.IsDigit(e.KeyChar) And e.KeyChar <> vbBack Then
+            e.Handled = True
+        End If
+        e.KeyChar = Char.ToUpper(e.KeyChar)
     End Sub
 End Class

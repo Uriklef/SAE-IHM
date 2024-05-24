@@ -36,6 +36,10 @@ Partial Class Form1
         Me.BJouer = New System.Windows.Forms.Button()
         Me.BTrierNoms = New System.Windows.Forms.Button()
         Me.PLeaderBoard = New System.Windows.Forms.Panel()
+        Me.BStats = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.BTriScore = New System.Windows.Forms.Button()
+        Me.CBNoms = New System.Windows.Forms.ComboBox()
         Me.PMenu.SuspendLayout()
         Me.PLeaderBoard.SuspendLayout()
         Me.SuspendLayout()
@@ -164,7 +168,7 @@ Partial Class Form1
         '
         'BTrierNoms
         '
-        Me.BTrierNoms.Location = New System.Drawing.Point(558, 112)
+        Me.BTrierNoms.Location = New System.Drawing.Point(558, 103)
         Me.BTrierNoms.Name = "BTrierNoms"
         Me.BTrierNoms.Size = New System.Drawing.Size(139, 28)
         Me.BTrierNoms.TabIndex = 14
@@ -173,6 +177,10 @@ Partial Class Form1
         '
         'PLeaderBoard
         '
+        Me.PLeaderBoard.Controls.Add(Me.CBNoms)
+        Me.PLeaderBoard.Controls.Add(Me.BStats)
+        Me.PLeaderBoard.Controls.Add(Me.Label1)
+        Me.PLeaderBoard.Controls.Add(Me.BTriScore)
         Me.PLeaderBoard.Controls.Add(Me.BTrierNoms)
         Me.PLeaderBoard.Controls.Add(Me.LBMeilleursScores)
         Me.PLeaderBoard.Controls.Add(Me.LBNoms)
@@ -181,6 +189,41 @@ Partial Class Form1
         Me.PLeaderBoard.Name = "PLeaderBoard"
         Me.PLeaderBoard.Size = New System.Drawing.Size(727, 270)
         Me.PLeaderBoard.TabIndex = 15
+        '
+        'BStats
+        '
+        Me.BStats.Location = New System.Drawing.Point(558, 208)
+        Me.BStats.Name = "BStats"
+        Me.BStats.Size = New System.Drawing.Size(139, 44)
+        Me.BStats.TabIndex = 17
+        Me.BStats.Text = "Afficher les Statistiques"
+        Me.BStats.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(26, 131)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(140, 16)
+        Me.Label1.TabIndex = 16
+        Me.Label1.Text = "Rechercher un joueur :"
+        '
+        'BTriScore
+        '
+        Me.BTriScore.Location = New System.Drawing.Point(558, 160)
+        Me.BTriScore.Name = "BTriScore"
+        Me.BTriScore.Size = New System.Drawing.Size(139, 25)
+        Me.BTriScore.TabIndex = 15
+        Me.BTriScore.Text = "Trier par Scores"
+        Me.BTriScore.UseVisualStyleBackColor = True
+        '
+        'CBNoms
+        '
+        Me.CBNoms.FormattingEnabled = True
+        Me.CBNoms.Location = New System.Drawing.Point(27, 178)
+        Me.CBNoms.Name = "CBNoms"
+        Me.CBNoms.Size = New System.Drawing.Size(138, 24)
+        Me.CBNoms.TabIndex = 18
         '
         'Form1
         '
@@ -216,4 +259,8 @@ Partial Class Form1
     Friend WithEvents BJouer As Button
     Friend WithEvents BTrierNoms As Button
     Friend WithEvents PLeaderBoard As Panel
+    Friend WithEvents BTriScore As Button
+    Friend WithEvents Label1 As Label
+    Friend WithEvents BStats As Button
+    Friend WithEvents CBNoms As ComboBox
 End Class
