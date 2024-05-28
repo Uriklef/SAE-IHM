@@ -58,7 +58,7 @@ Public Class Form2
         lblNbErreursRestantes.Text = String.Format("{0}", nbErreursPossibles)
     End Sub
 
-    Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub Jeu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Timer.Interval = 1000
         ActualisationLabel()
 

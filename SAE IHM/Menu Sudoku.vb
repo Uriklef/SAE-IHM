@@ -1,6 +1,6 @@
 Public Class Form1
 
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub Menu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LRegle.Hide()
         BRetour.Hide()
         PLeaderBoard.Hide()
@@ -115,16 +115,17 @@ Public Class Form1
         Next
     End Sub
 
-    Private Sub CBNoms_KeyPress(sender As Object, e As KeyPressEventArgs)
+    Private Sub CBNoms_KeyPress(sender As Object, e As KeyPressEventArgs) Handles CBNoms.KeyPress
         If Char.IsDigit(e.KeyChar) And e.KeyChar <> vbBack Then
             e.Handled = True
         End If
         e.KeyChar = Char.ToUpper(e.KeyChar)
     End Sub
 
-    Private Sub LBNoms_SelectedIndexChanged(sender As Object, e As EventArgs) Handles LBNoms.SelectedIndexChanged, LBMeilleursScores.SelectedIndexChanged
+    Private Sub LBNoms_SelectedChanged(sender As Object, e As EventArgs) Handles LBNoms.Click, LBMeilleursScores.Click, CBNoms.Click
         LBMeilleursScores.SelectedIndex = sender.SelectedIndex
         LBNoms.SelectedIndex = sender.SelectedIndex
+        CBNoms.SelectedItem = LBNoms.SelectedItem
     End Sub
 
     Private Sub BStats_Click(sender As Object, e As EventArgs) Handles BStats.Click
@@ -141,17 +142,5 @@ Public Class Form1
                 Exit Sub
             End If
         Next
-    End Sub
-
-    Private Sub CBNoms_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBNoms.SelectedIndexChanged, LBNoms.SelectedIndexChanged
-        LBNoms.SelectedItem = sender.SelectedItem
-        CBNoms.SelectedText = sender.SelectedItem
-    End Sub
-
-    Private Sub CBNoms_KeyPress_1(sender As Object, e As KeyPressEventArgs) Handles CBNoms.KeyPress
-        If Char.IsDigit(e.KeyChar) And e.KeyChar <> vbBack Then
-            e.Handled = True
-        End If
-        e.KeyChar = Char.ToUpper(e.KeyChar)
     End Sub
 End Class
