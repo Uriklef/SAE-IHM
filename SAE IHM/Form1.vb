@@ -1,10 +1,22 @@
-﻿Public Class Form1
+Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LRegle.Hide()
         BRetour.Hide()
         PLeaderBoard.Hide()
 
+        Dim audioStream As System.IO.Stream = My.Resources.MSUDOKU
+        
+        If audioStream IsNot Nothing Then
+            Dim tempPath As String = System.IO.Path.GetTempFileName()
+            Using fileStream As New System.IO.FileStream(tempPath, System.IO.FileMode.Create, System.IO.FileAccess.Write)
+                audioStream.CopyTo(fileStream)
+            End Using
+
+            My.Computer.Audio.Play(tempPath, AudioPlayMode.BackgroundLoop)
+        Else
+            MessageBox.Show("Le fichier audio n'est pas disponible.")
+        End If
     End Sub
 
     Private Sub RemplieScore()
