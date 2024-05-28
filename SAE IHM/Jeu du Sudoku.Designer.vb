@@ -112,6 +112,7 @@ Partial Class Form2
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
         Me.labelMinuteur = New System.Windows.Forms.Label()
         Me.BtnTerminer = New System.Windows.Forms.Button()
+        Me.lblNbErreursRestantes = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'TextBox1
@@ -928,9 +929,9 @@ Partial Class Form2
         '
         Me.BtnQuitter.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.BtnQuitter.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.BtnQuitter.Location = New System.Drawing.Point(523, 358)
+        Me.BtnQuitter.Location = New System.Drawing.Point(518, 375)
         Me.BtnQuitter.Name = "BtnQuitter"
-        Me.BtnQuitter.Size = New System.Drawing.Size(114, 42)
+        Me.BtnQuitter.Size = New System.Drawing.Size(118, 57)
         Me.BtnQuitter.TabIndex = 81
         Me.BtnQuitter.Text = "QUITTER"
         Me.BtnQuitter.UseVisualStyleBackColor = False
@@ -939,7 +940,7 @@ Partial Class Form2
         '
         Me.LblTimer.AutoSize = True
         Me.LblTimer.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblTimer.Location = New System.Drawing.Point(503, 57)
+        Me.LblTimer.Location = New System.Drawing.Point(489, 47)
         Me.LblTimer.Name = "LblTimer"
         Me.LblTimer.Size = New System.Drawing.Size(134, 20)
         Me.LblTimer.TabIndex = 82
@@ -949,19 +950,19 @@ Partial Class Form2
         '
         Me.LblNombreErreurs.AutoSize = True
         Me.LblNombreErreurs.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblNombreErreurs.Location = New System.Drawing.Point(503, 104)
+        Me.LblNombreErreurs.Location = New System.Drawing.Point(489, 83)
         Me.LblNombreErreurs.Name = "LblNombreErreurs"
-        Me.LblNombreErreurs.Size = New System.Drawing.Size(162, 20)
+        Me.LblNombreErreurs.Size = New System.Drawing.Size(159, 20)
         Me.LblNombreErreurs.TabIndex = 83
-        Me.LblNombreErreurs.Text = "Nombre d'erreurs : "
+        Me.LblNombreErreurs.Text = "Erreurs restantes :"
         '
         'BtnNouvellePartie
         '
         Me.BtnNouvellePartie.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.BtnNouvellePartie.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.BtnNouvellePartie.Location = New System.Drawing.Point(523, 229)
+        Me.BtnNouvellePartie.Location = New System.Drawing.Point(518, 143)
         Me.BtnNouvellePartie.Name = "BtnNouvellePartie"
-        Me.BtnNouvellePartie.Size = New System.Drawing.Size(114, 42)
+        Me.BtnNouvellePartie.Size = New System.Drawing.Size(118, 57)
         Me.BtnNouvellePartie.TabIndex = 84
         Me.BtnNouvellePartie.Text = "NOUVELLE PARTIE"
         Me.BtnNouvellePartie.UseVisualStyleBackColor = False
@@ -970,9 +971,9 @@ Partial Class Form2
         '
         Me.BtnIndice.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.BtnIndice.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.BtnIndice.Location = New System.Drawing.Point(523, 294)
+        Me.BtnIndice.Location = New System.Drawing.Point(518, 217)
         Me.BtnIndice.Name = "BtnIndice"
-        Me.BtnIndice.Size = New System.Drawing.Size(114, 42)
+        Me.BtnIndice.Size = New System.Drawing.Size(118, 57)
         Me.BtnIndice.TabIndex = 85
         Me.BtnIndice.Text = "INDICE"
         Me.BtnIndice.UseVisualStyleBackColor = False
@@ -984,7 +985,7 @@ Partial Class Form2
         '
         Me.labelMinuteur.AutoSize = True
         Me.labelMinuteur.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labelMinuteur.Location = New System.Drawing.Point(643, 54)
+        Me.labelMinuteur.Location = New System.Drawing.Point(620, 43)
         Me.labelMinuteur.Name = "labelMinuteur"
         Me.labelMinuteur.Size = New System.Drawing.Size(49, 24)
         Me.labelMinuteur.TabIndex = 87
@@ -994,18 +995,29 @@ Partial Class Form2
         '
         Me.BtnTerminer.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.BtnTerminer.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.BtnTerminer.Location = New System.Drawing.Point(523, 169)
+        Me.BtnTerminer.Location = New System.Drawing.Point(518, 295)
         Me.BtnTerminer.Name = "BtnTerminer"
-        Me.BtnTerminer.Size = New System.Drawing.Size(114, 42)
+        Me.BtnTerminer.Size = New System.Drawing.Size(118, 57)
         Me.BtnTerminer.TabIndex = 88
         Me.BtnTerminer.Text = "TERMINER"
         Me.BtnTerminer.UseVisualStyleBackColor = False
+        '
+        'lblNbErreursRestantes
+        '
+        Me.lblNbErreursRestantes.AutoSize = True
+        Me.lblNbErreursRestantes.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNbErreursRestantes.Location = New System.Drawing.Point(648, 80)
+        Me.lblNbErreursRestantes.Name = "lblNbErreursRestantes"
+        Me.lblNbErreursRestantes.Size = New System.Drawing.Size(21, 24)
+        Me.lblNbErreursRestantes.TabIndex = 89
+        Me.lblNbErreursRestantes.Text = "0"
         '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(779, 472)
+        Me.ClientSize = New System.Drawing.Size(902, 474)
+        Me.Controls.Add(Me.lblNbErreursRestantes)
         Me.Controls.Add(Me.BtnTerminer)
         Me.Controls.Add(Me.labelMinuteur)
         Me.Controls.Add(Me.BtnIndice)
@@ -1190,4 +1202,5 @@ Partial Class Form2
     Friend WithEvents Timer As Timer
     Friend WithEvents labelMinuteur As Label
     Friend WithEvents BtnTerminer As Button
+    Friend WithEvents lblNbErreursRestantes As Label
 End Class

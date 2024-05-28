@@ -5,6 +5,7 @@ Public Class Form2
     Dim tempsMax As Integer = 7 * 60
     Dim partieActive As Boolean
     Dim currentJoueur As String
+    Dim nbErreursPossibles As Integer = 3
 
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
         If tempsMax > 0 Then
@@ -53,6 +54,8 @@ Public Class Form2
         Dim minutes As Integer = tempsMax \ 60
         Dim secondes As Integer = tempsMax Mod 60
         labelMinuteur.Text = String.Format("{0:00}:{1:00}", minutes, secondes)
+
+        lblNbErreursRestantes.Text = String.Format("{0}", nbErreursPossibles)
     End Sub
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
