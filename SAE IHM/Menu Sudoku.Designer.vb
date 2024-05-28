@@ -40,6 +40,8 @@ Partial Class Form1
         Me.BStats = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.BTriScore = New System.Windows.Forms.Button()
+        Me.BCreateurs = New System.Windows.Forms.Button()
+        Me.LCreateurs = New System.Windows.Forms.Label()
         Me.PMenu.SuspendLayout()
         Me.PLeaderBoard.SuspendLayout()
         Me.SuspendLayout()
@@ -232,11 +234,34 @@ Partial Class Form1
         Me.BTriScore.Text = "Trier par Scores"
         Me.BTriScore.UseVisualStyleBackColor = True
         '
+        'BCreateurs
+        '
+        Me.BCreateurs.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BCreateurs.Location = New System.Drawing.Point(790, 25)
+        Me.BCreateurs.Name = "BCreateurs"
+        Me.BCreateurs.Size = New System.Drawing.Size(75, 23)
+        Me.BCreateurs.TabIndex = 16
+        Me.BCreateurs.Text = "?"
+        Me.BCreateurs.UseVisualStyleBackColor = True
+        '
+        'LCreateurs
+        '
+        Me.LCreateurs.AutoSize = True
+        Me.LCreateurs.BackColor = System.Drawing.SystemColors.Info
+        Me.LCreateurs.Location = New System.Drawing.Point(652, 65)
+        Me.LCreateurs.Name = "LCreateurs"
+        Me.LCreateurs.Size = New System.Drawing.Size(168, 80)
+        Me.LCreateurs.TabIndex = 17
+        Me.LCreateurs.Text = "Créateurs de l'application : " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " - Rayan Meri" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " - Oskar Jakubczyk" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " - Tony Olivier" &
+    "a" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " - Arnaud Sahat"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(857, 559)
+        Me.Controls.Add(Me.LCreateurs)
+        Me.Controls.Add(Me.BCreateurs)
         Me.Controls.Add(Me.PLeaderBoard)
         Me.Controls.Add(Me.PMenu)
         Me.Controls.Add(Me.BRetour)
@@ -270,4 +295,6 @@ Partial Class Form1
     Friend WithEvents Label1 As Label
     Friend WithEvents BStats As Button
     Friend WithEvents CBNoms As ComboBox
+    Friend WithEvents BCreateurs As Button
+    Friend WithEvents LCreateurs As Label
 End Class

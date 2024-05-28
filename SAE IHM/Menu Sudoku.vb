@@ -1,9 +1,14 @@
+Imports System.Drawing.Drawing2D
+
 Public Class Form1
+
+    Dim InfoCreateursActif = False
 
     Private Sub Menu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LRegle.Hide()
         BRetour.Hide()
         PLeaderBoard.Hide()
+        LCreateurs.Hide()
 
         Dim audioStream As System.IO.Stream = My.Resources.opNami
 
@@ -17,6 +22,25 @@ Public Class Form1
         Else
             MessageBox.Show("Le fichier audio n'est pas disponible.")
         End If
+
+        AddHandler BCreateurs.Paint, AddressOf Me.BCreateursPaint
+        BCreateurs.Size = New Size(30, 30)
+    End Sub
+
+    Private Sub BCreateursPaint(sender As Object, e As PaintEventArgs)
+        Dim button As Button = CType(sender, Button)
+        Dim path As New GraphicsPath()
+        Dim diameter As Integer = Math.Min(button.Width, button.Height)
+        path.AddEllipse(0, 0, diameter, diameter)
+        button.Region = New Region(path)
+        Dim sf As New StringFormat With {
+            .Alignment = StringAlignment.Center,
+            .LineAlignment = StringAlignment.Center
+        }
+        e.Graphics.DrawString(button.Text, button.Font, Brushes.Black, New Rectangle(0, 0, button.Width, button.Height), sf)
+        Using pen As New Pen(Color.Black, 2)
+            e.Graphics.DrawPath(pen, path)
+        End Using
     End Sub
 
     Private Sub RemplieScore()
@@ -51,6 +75,7 @@ Public Class Form1
 
     Private Sub BRegle_Click(sender As Object, e As EventArgs) Handles BRegle.Click
         PMenu.Hide()
+        BCreateurs.Hide()
         LRegle.Show()
         BRetour.Show()
         LTitre.Text = "REGLES"
@@ -61,6 +86,7 @@ Public Class Form1
         BRetour.Hide()
         PLeaderBoard.Hide()
         PMenu.Show()
+        BCreateurs.Show()
         LTitre.Text = "SUDOKU"
     End Sub
 
@@ -73,6 +99,7 @@ Public Class Form1
 
     Private Sub BLeaderBoard_Click(sender As Object, e As EventArgs) Handles BLeaderBoard.Click
         PMenu.Hide()
+        BCreateurs.Hide()
         RemplieScore()
         PLeaderBoard.Show()
         BRetour.Show()
@@ -142,5 +169,12 @@ Public Class Form1
                 Exit Sub
             End If
         Next
+    End Sub
+
+    Private Sub BCreateurs_Click(sender As Object, e As EventArgs) Handles BCreateurs.Click
+        LCreateurs.Show()
+        LCreateurs.Refresh()
+        System.Threading.Thread.Sleep(4000)
+        LCreateurs.Hide()
     End Sub
 End Class
