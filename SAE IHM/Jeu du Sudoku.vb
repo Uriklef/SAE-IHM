@@ -75,6 +75,7 @@ Public Class Form2
             Next
         Next
         grille = GenerateSudoku()
+        ColorierRegions()
     End Sub
 
     Private Function grilleComplete()
@@ -144,6 +145,7 @@ Public Class Form2
         BtnTerminer.Enabled = False
         BtnIndice.Enabled = False
         Timer.Stop()
+        ColorierRegions()
     End Sub
 
     Private Sub TextBox_Click(sender As Object, e As MouseEventArgs)
@@ -152,15 +154,8 @@ Public Class Form2
         Dim ligne As Integer = position.Row
         Dim colonne As Integer = position.Column
 
-        ' On met toutes les textbox en blanc
-        For i As Integer = 0 To 8
-            For j As Integer = 0 To 8
-                Dim tb As TextBox = GetTextBox(i, j)
-                If tb IsNot Nothing Then
-                    tb.BackColor = Color.White
-                End If
-            Next
-        Next
+        ' Restaurer les couleurs des régions avant de les colorier en bleu
+        RestaurerCouleurs()
 
         ' Colorier la ligne
         For i As Integer = 0 To 8
@@ -196,7 +191,6 @@ Public Class Form2
     End Sub
 
     Private Sub BtnTerminer_Click(sender As Object, e As EventArgs) Handles BtnTerminer.Click
-
         MsgBox("Felicitation " & currentJoueur & " ,tu remportes la partie !")
         Timer.Stop()
         BtnTerminer.Enabled = False
@@ -235,6 +229,7 @@ Public Class Form2
                 End If
             Next
         Next
+        ColorierRegions()
     End Sub
 
     Private Function GetTextBox(ligne As Integer, colonne As Integer) As TextBox ' Obtient la TextBox a la position donnée
@@ -245,4 +240,38 @@ Public Class Form2
         Me.Close()
         Form1.Show()
     End Sub
+
+    Private Sub ColorierRegions()
+        For regionLigne As Integer = 0 To 2
+            For regionColonne As Integer = 0 To 2
+                If (regionLigne + regionColonne) Mod 2 = 0 Then
+                    For i As Integer = regionLigne * 3 To regionLigne * 3 + 2
+                        For j As Integer = regionColonne * 3 To regionColonne * 3 + 2
+                            Dim tb As TextBox = GetTextBox(i, j)
+                            If tb IsNot Nothing Then
+                                tb.BackColor = Color.LightGray
+                            End If
+                        Next
+                    Next
+                End If
+            Next
+        Next
+    End Sub
+
+    Private Sub RestaurerCouleurs()
+        For i As Integer = 0 To 8
+            For j As Integer = 0 To 8
+                Dim tb As TextBox = GetTextBox(i, j)
+                If tb IsNot Nothing Then
+                    ' Restaurer les couleurs grises
+                    If ((i \ 3) + (j \ 3)) Mod 2 = 0 Then
+                        tb.BackColor = Color.LightGray
+                    Else
+                        tb.BackColor = Color.White
+                    End If
+                End If
+            Next
+        Next
+    End Sub
+
 End Class
