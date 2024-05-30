@@ -97,7 +97,7 @@ Partial Class Form1
         Me.LBNoms.Location = New System.Drawing.Point(203, 103)
         Me.LBNoms.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.LBNoms.Name = "LBNoms"
-        Me.LBNoms.Size = New System.Drawing.Size(132, 104)
+        Me.LBNoms.Size = New System.Drawing.Size(132, 144)
         Me.LBNoms.TabIndex = 11
         '
         'LBMeilleursScores
@@ -108,7 +108,7 @@ Partial Class Form1
         Me.LBMeilleursScores.Location = New System.Drawing.Point(373, 103)
         Me.LBMeilleursScores.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.LBMeilleursScores.Name = "LBMeilleursScores"
-        Me.LBMeilleursScores.Size = New System.Drawing.Size(132, 104)
+        Me.LBMeilleursScores.Size = New System.Drawing.Size(132, 144)
         Me.LBMeilleursScores.TabIndex = 12
         '
         'PMenu
@@ -190,7 +190,7 @@ Partial Class Form1
         Me.PLeaderBoard.Controls.Add(Me.LBMeilleursScores)
         Me.PLeaderBoard.Controls.Add(Me.LBNoms)
         Me.PLeaderBoard.Controls.Add(Me.LScores)
-        Me.PLeaderBoard.Location = New System.Drawing.Point(57, 156)
+        Me.PLeaderBoard.Location = New System.Drawing.Point(72, 154)
         Me.PLeaderBoard.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.PLeaderBoard.Name = "PLeaderBoard"
         Me.PLeaderBoard.Size = New System.Drawing.Size(727, 270)
@@ -237,10 +237,10 @@ Partial Class Form1
         'BCreateurs
         '
         Me.BCreateurs.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BCreateurs.Location = New System.Drawing.Point(790, 25)
+        Me.BCreateurs.Location = New System.Drawing.Point(792, 12)
         Me.BCreateurs.Name = "BCreateurs"
         Me.BCreateurs.Size = New System.Drawing.Size(75, 23)
-        Me.BCreateurs.TabIndex = 16
+        Me.BCreateurs.TabIndex = 17
         Me.BCreateurs.Text = "?"
         Me.BCreateurs.UseVisualStyleBackColor = True
         '
@@ -248,10 +248,10 @@ Partial Class Form1
         '
         Me.LCreateurs.AutoSize = True
         Me.LCreateurs.BackColor = System.Drawing.SystemColors.Info
-        Me.LCreateurs.Location = New System.Drawing.Point(652, 65)
+        Me.LCreateurs.Location = New System.Drawing.Point(659, 53)
         Me.LCreateurs.Name = "LCreateurs"
         Me.LCreateurs.Size = New System.Drawing.Size(168, 80)
-        Me.LCreateurs.TabIndex = 17
+        Me.LCreateurs.TabIndex = 18
         Me.LCreateurs.Text = "Créateurs de l'application : " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " - Rayan Meri" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " - Oskar Jakubczyk" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " - Tony Olivier" &
     "a" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " - Arnaud Sahat"
         '
@@ -269,7 +269,7 @@ Partial Class Form1
         Me.Controls.Add(Me.LTitre)
         Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "Form1"
-        Me.Text = "Form1"
+        Me.Text = "à"
         Me.PMenu.ResumeLayout(False)
         Me.PLeaderBoard.ResumeLayout(False)
         Me.PLeaderBoard.PerformLayout()

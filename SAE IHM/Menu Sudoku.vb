@@ -2,8 +2,6 @@ Imports System.Drawing.Drawing2D
 
 Public Class Form1
 
-    Dim InfoCreateursActif = False
-
     Private Sub Menu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LRegle.Hide()
         BRetour.Hide()
