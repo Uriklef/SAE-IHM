@@ -8,6 +8,7 @@ Public Class Form2
     Dim currentJoueur As String
     Dim nbErreursPossibles As Integer = 3
     Dim grille As Integer(,)
+    Private modeIndice As Boolean = False
 
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
         If tempsMax > 0 Then
@@ -36,6 +37,7 @@ Public Class Form2
             BtnQuitter.Enabled = False
             BtnAbandonner.Show()
             BtnQuitter.Hide()
+            BtnPause.Show()
             BtnAbandonner.Enabled = True
             tempsMax = 7 * 60
             Timer.Start()
@@ -60,6 +62,10 @@ Public Class Form2
 
         BtnTerminer.Enabled = False
         BtnTerminer.Hide()
+
+        If partieActive = False Then
+            BtnPause.Hide()
+        End If
 
         For ligne As Integer = 0 To 8
             For colonne As Integer = 0 To 8
@@ -126,10 +132,8 @@ Public Class Form2
             Dim textBox As TextBox = DirectCast(sender, TextBox)
             Dim position As TableLayoutPanelCellPosition = TableLayoutPanelQuadrillage.GetPositionFromControl(textBox)
             If grille(position.Row, position.Column).ToString <> e.KeyChar Then
-                textBox.ForeColor = Color.Red
+                textBox.BackColor = Color.Red
                 nbErreursPossibles = nbErreursPossibles - 1
-            Else
-                textBox.ForeColor = Color.LightGreen
             End If
             If nbErreursPossibles = 0 Then
                 MsgBox("Tu as fais trop d'erreurs, la partie est perdue")
@@ -142,9 +146,24 @@ Public Class Form2
     End Sub
 
     Private Sub BtnIndice_Click(sender As Object, e As EventArgs) Handles BtnIndice.Click
-        If partieActive = False Then
+        If Not partieActive Then
             MessageBox.Show("Il faut lancer une partie pour avoir accès à un indice")
+            Return
         End If
+
+        modeIndice = True
+
+        ' Désactiver l'édition des TextBox
+        For i As Integer = 0 To 8
+            For j As Integer = 0 To 8
+                Dim tb As TextBox = GetTextBox(i, j)
+                If tb IsNot Nothing Then
+                    tb.ReadOnly = True
+                End If
+            Next
+        Next
+
+        MessageBox.Show("Mode indice activé. Cliquez sur une case vide pour afficher un indice.")
     End Sub
 
     Private Sub ReinitialiserPartie()
@@ -169,40 +188,59 @@ Public Class Form2
         Dim ligne As Integer = position.Row
         Dim colonne As Integer = position.Column
 
-        ' Restaurer les couleurs des régions avant de les colorier en bleu
-        RestaurerCouleurs()
+        If modeIndice AndAlso textBox.Text = "" Then
+            ' Afficher le chiffre correct et colorier le texte en jaune
+            textBox.Text = grille(ligne, colonne).ToString()
+            textBox.ForeColor = Color.Yellow
 
-        ' Colorier la ligne
-        For i As Integer = 0 To 8
-            Dim tb As TextBox = GetTextBox(ligne, i)
-            If tb IsNot Nothing Then
-                tb.BackColor = Color.LightBlue
-            End If
-        Next
+            ' Désactiver le mode indice après avoir affiché un indice
+            modeIndice = False
 
-        ' Colorier la colonne
-        For i As Integer = 0 To 8
-            Dim tb As TextBox = GetTextBox(i, colonne)
-            If tb IsNot Nothing Then
-                tb.BackColor = Color.LightBlue
-            End If
-        Next
+            ' Rendre les TextBox éditables à nouveau
+            For i As Integer = 0 To 8
+                For j As Integer = 0 To 8
+                    Dim tb As TextBox = GetTextBox(i, j)
+                    If tb IsNot Nothing Then
+                        tb.ReadOnly = False
+                    End If
+                Next
+            Next
+        Else
+            ' Restaurer les couleurs des régions avant de les colorier en bleu
+            RestaurerCouleurs()
 
-        ' Colorer la region
-        Dim debutLigne As Integer = (ligne \ 3) * 3
-        Dim debutColonne As Integer = (colonne \ 3) * 3
-
-        For i As Integer = debutLigne To debutLigne + 2
-            For j As Integer = debutColonne To debutColonne + 2
-                Dim tb As TextBox = GetTextBox(i, j)
+            ' Colorier la ligne
+            For i As Integer = 0 To 8
+                Dim tb As TextBox = GetTextBox(ligne, i)
                 If tb IsNot Nothing Then
                     tb.BackColor = Color.LightBlue
                 End If
             Next
-        Next
 
-        ' On change la couleur de la textbox sur laquelle on clique
-        textBox.BackColor = Color.LightSteelBlue
+            ' Colorier la colonne
+            For i As Integer = 0 To 8
+                Dim tb As TextBox = GetTextBox(i, colonne)
+                If tb IsNot Nothing Then
+                    tb.BackColor = Color.LightBlue
+                End If
+            Next
+
+            ' Colorer la region
+            Dim debutLigne As Integer = (ligne \ 3) * 3
+            Dim debutColonne As Integer = (colonne \ 3) * 3
+
+            For i As Integer = debutLigne To debutLigne + 2
+                For j As Integer = debutColonne To debutColonne + 2
+                    Dim tb As TextBox = GetTextBox(i, j)
+                    If tb IsNot Nothing Then
+                        tb.BackColor = Color.LightBlue
+                    End If
+                Next
+            Next
+
+            ' On change la couleur de la textbox sur laquelle on clique
+            textBox.BackColor = Color.LightSteelBlue
+        End If
     End Sub
 
     Private Sub BtnTerminer_Click(sender As Object, e As EventArgs) Handles BtnTerminer.Click
@@ -278,7 +316,6 @@ Public Class Form2
             For j As Integer = 0 To 8
                 Dim tb As TextBox = GetTextBox(i, j)
                 If tb IsNot Nothing Then
-                    ' Restaurer les couleurs grises
                     If ((i \ 3) + (j \ 3)) Mod 2 = 0 Then
                         tb.BackColor = Color.LightGray
                     Else
@@ -289,4 +326,16 @@ Public Class Form2
         Next
     End Sub
 
+    Private Sub BtnPause_Click(sender As Object, e As EventArgs) Handles BtnPause.Click
+        Timer.Stop()
+        Dim formulairePause As New Pause()
+        formulairePause.NbErreursRestantes = nbErreursPossibles
+        formulairePause.TempsRestant = tempsMax
+        Me.Hide()
+        formulairePause.ShowDialog()
+        If formulairePause.DialogResult = DialogResult.OK Then
+            Timer.Start()
+            Me.Show()
+        End If
+    End Sub
 End Class
