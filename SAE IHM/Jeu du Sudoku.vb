@@ -33,6 +33,10 @@ Public Class Form2
             partieActive = True
             BtnTerminer.Enabled = True
             BtnIndice.Enabled = True
+            BtnQuitter.Enabled = False
+            BtnAbandonner.Show()
+            BtnQuitter.Hide()
+            BtnAbandonner.Enabled = True
             tempsMax = 7 * 60
             Timer.Start()
             ActualisationLabel()
@@ -56,7 +60,6 @@ Public Class Form2
 
         BtnTerminer.Enabled = False
         BtnTerminer.Hide()
-        BtnQuitter.Hide()
 
         For ligne As Integer = 0 To 8
             For colonne As Integer = 0 To 8
@@ -91,17 +94,29 @@ Public Class Form2
     Private Sub BtnQuitter_Click(sender As Object, e As EventArgs) Handles BtnAbandonner.Click
         Dim resultat As MsgBoxResult = MsgBox("Voulez vous vraiment abandonner ?", vbYesNo)
         If resultat = MsgBoxResult.Yes Then
-            Dim soluce As MsgBoxResult = MsgBox("Voulez vous voir la solution ?", vbYesNo)
-            If soluce = vbYes Then
-                MsgBox("Coming soon")
+            If MsgBox("Voulez vous voir la solution ?", vbYesNo) = vbYes Then
+                MontrerSolution()
                 BtnAbandonner.Hide()
                 BtnIndice.Hide()
                 BtnQuitter.Show()
+                BtnQuitter.Enabled = True
             Else
                 Me.Close()
                 Form1.Show()
             End If
         End If
+    End Sub
+
+    Private Sub MontrerSolution()
+        For i As Integer = 0 To 8
+            For j As Integer = 0 To 8
+                Dim tb As TextBox = GetTextBox(i, j)
+                If tb.Text = "" Then
+                    tb.ForeColor = Color.Green
+                    tb.Text = grille(i, j)
+                End If
+            Next
+        Next
     End Sub
 
     Private Sub TextBox_KeyPress(sender As Object, e As KeyPressEventArgs)
