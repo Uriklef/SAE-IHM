@@ -39,23 +39,23 @@ Partial Class Form2
         'BtnAbandonner
         '
         Me.BtnAbandonner.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.BtnAbandonner.Enabled = False
         Me.BtnAbandonner.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.BtnAbandonner.Location = New System.Drawing.Point(691, 406)
-        Me.BtnAbandonner.Margin = New System.Windows.Forms.Padding(4)
+        Me.BtnAbandonner.Location = New System.Drawing.Point(518, 330)
         Me.BtnAbandonner.Name = "BtnAbandonner"
-        Me.BtnAbandonner.Size = New System.Drawing.Size(157, 70)
+        Me.BtnAbandonner.Size = New System.Drawing.Size(118, 57)
         Me.BtnAbandonner.TabIndex = 81
         Me.BtnAbandonner.Text = "ABANDONNER"
         Me.BtnAbandonner.UseVisualStyleBackColor = False
+        Me.BtnAbandonner.Visible = False
         '
         'LblTimer
         '
         Me.LblTimer.AutoSize = True
         Me.LblTimer.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblTimer.Location = New System.Drawing.Point(652, 58)
-        Me.LblTimer.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.LblTimer.Location = New System.Drawing.Point(489, 47)
         Me.LblTimer.Name = "LblTimer"
-        Me.LblTimer.Size = New System.Drawing.Size(163, 25)
+        Me.LblTimer.Size = New System.Drawing.Size(134, 20)
         Me.LblTimer.TabIndex = 82
         Me.LblTimer.Text = "Temps restant :"
         '
@@ -63,10 +63,9 @@ Partial Class Form2
         '
         Me.LblNombreErreurs.AutoSize = True
         Me.LblNombreErreurs.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblNombreErreurs.Location = New System.Drawing.Point(652, 102)
-        Me.LblNombreErreurs.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.LblNombreErreurs.Location = New System.Drawing.Point(489, 83)
         Me.LblNombreErreurs.Name = "LblNombreErreurs"
-        Me.LblNombreErreurs.Size = New System.Drawing.Size(190, 25)
+        Me.LblNombreErreurs.Size = New System.Drawing.Size(159, 20)
         Me.LblNombreErreurs.TabIndex = 83
         Me.LblNombreErreurs.Text = "Erreurs restantes :"
         '
@@ -74,10 +73,9 @@ Partial Class Form2
         '
         Me.BtnIndice.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.BtnIndice.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.BtnIndice.Location = New System.Drawing.Point(691, 296)
-        Me.BtnIndice.Margin = New System.Windows.Forms.Padding(4)
+        Me.BtnIndice.Location = New System.Drawing.Point(518, 244)
         Me.BtnIndice.Name = "BtnIndice"
-        Me.BtnIndice.Size = New System.Drawing.Size(157, 70)
+        Me.BtnIndice.Size = New System.Drawing.Size(118, 57)
         Me.BtnIndice.TabIndex = 85
         Me.BtnIndice.Text = "INDICE"
         Me.BtnIndice.UseVisualStyleBackColor = False
@@ -89,10 +87,9 @@ Partial Class Form2
         '
         Me.labelMinuteur.AutoSize = True
         Me.labelMinuteur.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labelMinuteur.Location = New System.Drawing.Point(827, 53)
-        Me.labelMinuteur.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.labelMinuteur.Location = New System.Drawing.Point(620, 43)
         Me.labelMinuteur.Name = "labelMinuteur"
-        Me.labelMinuteur.Size = New System.Drawing.Size(62, 29)
+        Me.labelMinuteur.Size = New System.Drawing.Size(49, 24)
         Me.labelMinuteur.TabIndex = 87
         Me.labelMinuteur.Text = "0:00"
         '
@@ -100,10 +97,9 @@ Partial Class Form2
         '
         Me.BtnTerminer.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.BtnTerminer.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.BtnTerminer.Location = New System.Drawing.Point(691, 193)
-        Me.BtnTerminer.Margin = New System.Windows.Forms.Padding(4)
+        Me.BtnTerminer.Location = New System.Drawing.Point(518, 157)
         Me.BtnTerminer.Name = "BtnTerminer"
-        Me.BtnTerminer.Size = New System.Drawing.Size(157, 70)
+        Me.BtnTerminer.Size = New System.Drawing.Size(118, 57)
         Me.BtnTerminer.TabIndex = 88
         Me.BtnTerminer.Text = "VALIDER"
         Me.BtnTerminer.UseVisualStyleBackColor = False
@@ -112,10 +108,9 @@ Partial Class Form2
         '
         Me.lblNbErreursRestantes.AutoSize = True
         Me.lblNbErreursRestantes.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNbErreursRestantes.Location = New System.Drawing.Point(864, 98)
-        Me.lblNbErreursRestantes.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblNbErreursRestantes.Location = New System.Drawing.Point(648, 80)
         Me.lblNbErreursRestantes.Name = "lblNbErreursRestantes"
-        Me.lblNbErreursRestantes.Size = New System.Drawing.Size(27, 29)
+        Me.lblNbErreursRestantes.Size = New System.Drawing.Size(21, 24)
         Me.lblNbErreursRestantes.TabIndex = 89
         Me.lblNbErreursRestantes.Text = "0"
         '
@@ -133,8 +128,7 @@ Partial Class Form2
         Me.TableLayoutPanelQuadrillage.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111!))
         Me.TableLayoutPanelQuadrillage.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111!))
         Me.TableLayoutPanelQuadrillage.Enabled = False
-        Me.TableLayoutPanelQuadrillage.Location = New System.Drawing.Point(28, 33)
-        Me.TableLayoutPanelQuadrillage.Margin = New System.Windows.Forms.Padding(4)
+        Me.TableLayoutPanelQuadrillage.Location = New System.Drawing.Point(21, 27)
         Me.TableLayoutPanelQuadrillage.Name = "TableLayoutPanelQuadrillage"
         Me.TableLayoutPanelQuadrillage.RowCount = 9
         Me.TableLayoutPanelQuadrillage.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111!))
@@ -146,17 +140,16 @@ Partial Class Form2
         Me.TableLayoutPanelQuadrillage.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111!))
         Me.TableLayoutPanelQuadrillage.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111!))
         Me.TableLayoutPanelQuadrillage.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111!))
-        Me.TableLayoutPanelQuadrillage.Size = New System.Drawing.Size(603, 535)
+        Me.TableLayoutPanelQuadrillage.Size = New System.Drawing.Size(452, 435)
         Me.TableLayoutPanelQuadrillage.TabIndex = 103
         '
         'BtnCommencer
         '
         Me.BtnCommencer.BackColor = System.Drawing.Color.PaleGreen
         Me.BtnCommencer.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.BtnCommencer.Location = New System.Drawing.Point(691, 193)
-        Me.BtnCommencer.Margin = New System.Windows.Forms.Padding(4)
+        Me.BtnCommencer.Location = New System.Drawing.Point(518, 157)
         Me.BtnCommencer.Name = "BtnCommencer"
-        Me.BtnCommencer.Size = New System.Drawing.Size(157, 70)
+        Me.BtnCommencer.Size = New System.Drawing.Size(118, 57)
         Me.BtnCommencer.TabIndex = 104
         Me.BtnCommencer.Text = "COMMENCER"
         Me.BtnCommencer.UseVisualStyleBackColor = False
@@ -165,20 +158,18 @@ Partial Class Form2
         '
         Me.BtnQuitter.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.BtnQuitter.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.BtnQuitter.Location = New System.Drawing.Point(691, 406)
-        Me.BtnQuitter.Margin = New System.Windows.Forms.Padding(4)
+        Me.BtnQuitter.Location = New System.Drawing.Point(518, 330)
         Me.BtnQuitter.Name = "BtnQuitter"
-        Me.BtnQuitter.Size = New System.Drawing.Size(157, 70)
+        Me.BtnQuitter.Size = New System.Drawing.Size(118, 57)
         Me.BtnQuitter.TabIndex = 105
         Me.BtnQuitter.Text = "QUITTER"
         Me.BtnQuitter.UseVisualStyleBackColor = False
         '
         'Form2
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(947, 583)
-        Me.Controls.Add(Me.BtnQuitter)
+        Me.ClientSize = New System.Drawing.Size(710, 474)
         Me.Controls.Add(Me.BtnCommencer)
         Me.Controls.Add(Me.TableLayoutPanelQuadrillage)
         Me.Controls.Add(Me.lblNbErreursRestantes)
@@ -188,7 +179,7 @@ Partial Class Form2
         Me.Controls.Add(Me.LblNombreErreurs)
         Me.Controls.Add(Me.LblTimer)
         Me.Controls.Add(Me.BtnAbandonner)
-        Me.Margin = New System.Windows.Forms.Padding(4)
+        Me.Controls.Add(Me.BtnQuitter)
         Me.Name = "Form2"
         Me.Text = "Form1"
         Me.ResumeLayout(False)
