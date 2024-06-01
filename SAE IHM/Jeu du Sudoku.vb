@@ -1,14 +1,15 @@
-Imports System.Drawing.Text
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Header
-
 Public Class Form2
-
-    Dim tempsMax As Integer = 7 * 60
+    Dim tempsMax As Integer
     Dim partieActive As Boolean
     Dim currentJoueur As String
     Dim nbErreursPossibles As Integer = 3
+    Dim nbIndicesPossibles As Integer = 3
     Dim grille As Integer(,)
     Private modeIndice As Boolean = False
+
+    Public Sub SetGameSettings(time As Integer)
+        tempsMax = time
+    End Sub
 
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
         If tempsMax > 0 Then
@@ -39,13 +40,11 @@ Public Class Form2
             BtnQuitter.Hide()
             BtnPause.Show()
             BtnAbandonner.Enabled = True
-            tempsMax = 7 * 60
             Timer.Start()
             ActualisationLabel()
-            AfficherSudoku(grille, 80)
+            AfficherSudoku(grille, 81)
             TableLayoutPanelQuadrillage.Enabled = True
         End If
-
     End Sub
 
     Private Sub ActualisationLabel()
@@ -54,6 +53,8 @@ Public Class Form2
         labelMinuteur.Text = String.Format("{0:00}:{1:00}", minutes, secondes)
 
         lblNbErreursRestantes.Text = String.Format("{0}", nbErreursPossibles)
+
+        lblNbFoisIndice.Text = String.Format("X{0}", nbIndicesPossibles)
     End Sub
 
     Private Sub Jeu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -102,9 +103,11 @@ Public Class Form2
         If resultat = MsgBoxResult.Yes Then
             If MsgBox("Voulez vous voir la solution ?", vbYesNo) = vbYes Then
                 MontrerSolution()
+                ReinitialiserPartie()
                 BtnAbandonner.Hide()
                 BtnIndice.Hide()
                 BtnQuitter.Show()
+                lblNbFoisIndice.Hide()
                 BtnQuitter.Enabled = True
             Else
                 Me.Close()
@@ -118,7 +121,6 @@ Public Class Form2
             For j As Integer = 0 To 8
                 Dim tb As TextBox = GetTextBox(i, j)
                 If tb.Text = "" Then
-                    tb.ForeColor = Color.Green
                     tb.Text = grille(i, j)
                 End If
             Next
@@ -151,6 +153,14 @@ Public Class Form2
             Return
         End If
 
+        If nbIndicesPossibles = 0 Then
+            MessageBox.Show("Vous avez épuisé tous vos indices")
+            BtnIndice.Enabled = False
+            lblNbFoisIndice.Enabled = False
+
+            Return
+        End If
+
         modeIndice = True
 
         ' Désactiver l'édition des TextBox
@@ -164,6 +174,7 @@ Public Class Form2
         Next
 
         MessageBox.Show("Mode indice activé. Cliquez sur une case vide pour afficher un indice.")
+        nbIndicesPossibles = nbIndicesPossibles - 1
     End Sub
 
     Private Sub ReinitialiserPartie()
@@ -338,4 +349,5 @@ Public Class Form2
             Me.Show()
         End If
     End Sub
+
 End Class

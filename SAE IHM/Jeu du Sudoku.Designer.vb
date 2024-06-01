@@ -35,6 +35,7 @@ Partial Class Form2
         Me.BtnCommencer = New System.Windows.Forms.Button()
         Me.BtnQuitter = New System.Windows.Forms.Button()
         Me.BtnPause = New System.Windows.Forms.Button()
+        Me.lblNbFoisIndice = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'BtnAbandonner
@@ -78,7 +79,7 @@ Partial Class Form2
         Me.BtnIndice.Name = "BtnIndice"
         Me.BtnIndice.Size = New System.Drawing.Size(118, 57)
         Me.BtnIndice.TabIndex = 85
-        Me.BtnIndice.Text = "INDICE"
+        Me.BtnIndice.Text = "INDICE       "
         Me.BtnIndice.UseVisualStyleBackColor = False
         '
         'Timer
@@ -177,11 +178,22 @@ Partial Class Form2
         Me.BtnPause.Text = "PAUSE"
         Me.BtnPause.UseVisualStyleBackColor = False
         '
+        'lblNbFoisIndice
+        '
+        Me.lblNbFoisIndice.AutoSize = True
+        Me.lblNbFoisIndice.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.lblNbFoisIndice.Location = New System.Drawing.Point(594, 311)
+        Me.lblNbFoisIndice.Name = "lblNbFoisIndice"
+        Me.lblNbFoisIndice.Size = New System.Drawing.Size(20, 13)
+        Me.lblNbFoisIndice.TabIndex = 108
+        Me.lblNbFoisIndice.Text = "X3"
+        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(710, 474)
+        Me.Controls.Add(Me.lblNbFoisIndice)
         Me.Controls.Add(Me.BtnPause)
         Me.Controls.Add(Me.BtnCommencer)
         Me.Controls.Add(Me.TableLayoutPanelQuadrillage)
@@ -211,4 +223,5 @@ Partial Class Form2
     Friend WithEvents BtnCommencer As Button
     Friend WithEvents BtnQuitter As Button
     Friend WithEvents BtnPause As Button
+    Friend WithEvents lblNbFoisIndice As Label
 End Class

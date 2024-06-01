@@ -105,8 +105,7 @@ Public Class Form1
     End Sub
 
     Private Sub BJouer_Click(sender As Object, e As EventArgs) Handles BJouer.Click
-        Dim formulaireJeu As New Form2()
-        formulaireJeu.Show()
+        Choix_Difficulte.Show()
         Me.Hide()
     End Sub
 
