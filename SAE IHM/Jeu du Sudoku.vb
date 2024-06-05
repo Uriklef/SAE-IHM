@@ -108,6 +108,7 @@ Public Class Form2
                 BtnIndice.Hide()
                 BtnQuitter.Show()
                 lblNbFoisIndice.Hide()
+                BtnPause.Hide()
                 BtnQuitter.Enabled = True
             Else
                 Me.Close()
