@@ -42,7 +42,7 @@ Public Class Form2
             BtnAbandonner.Enabled = True
             Timer.Start()
             ActualisationLabel()
-            AfficherSudoku(grille, 81)
+            AfficherSudoku(grille, 85)
             TableLayoutPanelQuadrillage.Enabled = True
         End If
     End Sub
@@ -91,7 +91,7 @@ Public Class Form2
     Private Function grilleComplete()
         For i As Integer = 0 To 80
             Dim item As String = TableLayoutPanelQuadrillage.Controls.Item(i).Text
-            If item = "" Then
+            If item = " " Then
                 Return False
             End If
         Next
@@ -134,14 +134,24 @@ Public Class Form2
         ElseIf Char.IsDigit(e.KeyChar) Then
             Dim textBox As TextBox = DirectCast(sender, TextBox)
             Dim position As TableLayoutPanelCellPosition = TableLayoutPanelQuadrillage.GetPositionFromControl(textBox)
-            If grille(position.Row, position.Column).ToString <> e.KeyChar Then
+            Dim ligne As Integer = position.Row
+            Dim colonne As Integer = position.Column
+
+            ' Vérifiez si la réponse est correcte
+            If grille(ligne, colonne).ToString() = e.KeyChar.ToString() Then
+                textBox.BackColor = Color.LightGreen
+            Else
                 textBox.BackColor = Color.Red
-                nbErreursPossibles = nbErreursPossibles - 1
+                nbErreursPossibles -= 1
             End If
+
+            ' Vérifiez si le nombre maximum d'erreurs est atteint
             If nbErreursPossibles = 0 Then
                 MsgBox("Tu as fais trop d'erreurs, la partie est perdue")
                 ReinitialiserPartie()
             End If
+
+            ' Vérifiez si la grille est complète
             If grilleComplete() Then
                 BtnTerminer.Show()
             End If
@@ -196,6 +206,12 @@ Public Class Form2
 
     Private Sub TextBox_Click(sender As Object, e As MouseEventArgs)
         Dim textBox As TextBox = DirectCast(sender, TextBox)
+
+        ' Si la TextBox est rouge ou verte, ne rien faire
+        If textBox.BackColor = Color.Red OrElse textBox.BackColor = Color.LightGreen Then
+            Return
+        End If
+
         Dim position As TableLayoutPanelCellPosition = TableLayoutPanelQuadrillage.GetPositionFromControl(textBox)
         Dim ligne As Integer = position.Row
         Dim colonne As Integer = position.Column
@@ -204,6 +220,9 @@ Public Class Form2
             ' Afficher le chiffre correct et colorier le texte en jaune
             textBox.Text = grille(ligne, colonne).ToString()
             textBox.ForeColor = Color.Yellow
+            Dim correctChiffre As Char = grille(ligne, colonne).ToString()(0)
+            Dim eKeyPress As New KeyPressEventArgs(correctChiffre)
+            TextBox_KeyPress(textBox, eKeyPress)
 
             ' Désactiver le mode indice après avoir affiché un indice
             modeIndice = False
@@ -224,7 +243,7 @@ Public Class Form2
             ' Colorier la ligne
             For i As Integer = 0 To 8
                 Dim tb As TextBox = GetTextBox(ligne, i)
-                If tb IsNot Nothing Then
+                If tb IsNot Nothing AndAlso tb.BackColor <> Color.Red AndAlso tb.BackColor <> Color.LightGreen Then
                     tb.BackColor = Color.LightBlue
                 End If
             Next
@@ -232,7 +251,7 @@ Public Class Form2
             ' Colorier la colonne
             For i As Integer = 0 To 8
                 Dim tb As TextBox = GetTextBox(i, colonne)
-                If tb IsNot Nothing Then
+                If TypeOf tb Is TextBox AndAlso tb IsNot Nothing AndAlso tb.BackColor <> Color.Red AndAlso tb.BackColor <> Color.LightGreen Then
                     tb.BackColor = Color.LightBlue
                 End If
             Next
@@ -244,7 +263,7 @@ Public Class Form2
             For i As Integer = debutLigne To debutLigne + 2
                 For j As Integer = debutColonne To debutColonne + 2
                     Dim tb As TextBox = GetTextBox(i, j)
-                    If tb IsNot Nothing Then
+                    If TypeOf tb Is TextBox AndAlso tb IsNot Nothing AndAlso tb.BackColor <> Color.Red AndAlso tb.BackColor <> Color.LightGreen Then
                         tb.BackColor = Color.LightBlue
                     End If
                 Next
@@ -255,17 +274,30 @@ Public Class Form2
         End If
     End Sub
 
+
     Private Sub BtnTerminer_Click(sender As Object, e As EventArgs) Handles BtnTerminer.Click
-        MsgBox("Felicitation " & currentJoueur & " ,tu remportes la partie !")
+        ' Vérifier s'il y a des erreurs (cases rouges) sur la grille
+        For Each ctrl As Control In TableLayoutPanelQuadrillage.Controls
+            If TypeOf ctrl Is TextBox Then
+                Dim tb As TextBox = DirectCast(ctrl, TextBox)
+                If tb.BackColor = Color.Red Then
+                    MsgBox("Il y a des erreurs sur la grille. Corrigez-les avant de terminer la partie.")
+                    Return
+                End If
+            End If
+        Next
+
+        MsgBox("Félicitations " & currentJoueur & ", tu remportes la partie !")
         Timer.Stop()
-        BtnTerminer.Enabled = False
+        Me.Close()
+        Form1.Show()
 
         Dim nvScore As New Score With {
-            .Nom = currentJoueur.ToUpper(),
-            .MeilleurTemps = (7 * 60 - tempsMax),
-            .CumulTemps = .MeilleurTemps,
-            .NbParties = 1
-        }
+        .Nom = currentJoueur.ToUpper(),
+        .MeilleurTemps = (7 * 60 - tempsMax),
+        .CumulTemps = .MeilleurTemps,
+        .NbParties = 1
+    }
 
         For i As Integer = 0 To nbEnregistrement - 1
             Dim s As Score = scores.GetValue(i)
@@ -280,6 +312,7 @@ Public Class Form2
 
         scores.SetValue(nvScore, nbEnregistrement)
         nbEnregistrement += 1
+
     End Sub
 
     Private Sub AfficherSudoku(ByVal grille As Integer(,), ByVal nbMax As Integer)
@@ -309,16 +342,18 @@ Public Class Form2
     Private Sub ColorierRegions()
         For regionLigne As Integer = 0 To 2
             For regionColonne As Integer = 0 To 2
-                If (regionLigne + regionColonne) Mod 2 = 0 Then
-                    For i As Integer = regionLigne * 3 To regionLigne * 3 + 2
-                        For j As Integer = regionColonne * 3 To regionColonne * 3 + 2
-                            Dim tb As TextBox = GetTextBox(i, j)
-                            If tb IsNot Nothing Then
+                For i As Integer = regionLigne * 3 To regionLigne * 3 + 2
+                    For j As Integer = regionColonne * 3 To regionColonne * 3 + 2
+                        Dim tb As TextBox = GetTextBox(i, j)
+                        If tb IsNot Nothing AndAlso tb.BackColor <> Color.Red AndAlso tb.BackColor <> Color.LightGreen Then
+                            If (regionLigne + regionColonne) Mod 2 = 0 Then
                                 tb.BackColor = Color.LightGray
+                            Else
+                                tb.BackColor = Color.White
                             End If
-                        Next
+                        End If
                     Next
-                End If
+                Next
             Next
         Next
     End Sub
@@ -328,14 +363,17 @@ Public Class Form2
             For j As Integer = 0 To 8
                 Dim tb As TextBox = GetTextBox(i, j)
                 If tb IsNot Nothing Then
-                    If ((i \ 3) + (j \ 3)) Mod 2 = 0 Then
-                        tb.BackColor = Color.LightGray
-                    Else
-                        tb.BackColor = Color.White
+                    If tb.BackColor <> Color.Red AndAlso tb.BackColor <> Color.LightGreen Then
+                        If ((i \ 3) + (j \ 3)) Mod 2 = 0 Then
+                            tb.BackColor = Color.LightGray
+                        Else
+                            tb.BackColor = Color.White
+                        End If
                     End If
                 End If
             Next
         Next
+        ColorierRegions()
     End Sub
 
     Private Sub BtnPause_Click(sender As Object, e As EventArgs) Handles BtnPause.Click
