@@ -36,6 +36,9 @@ Partial Class Form2
         Me.BtnQuitter = New System.Windows.Forms.Button()
         Me.BtnPause = New System.Windows.Forms.Button()
         Me.lblNbFoisIndice = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'BtnAbandonner
@@ -54,7 +57,9 @@ Partial Class Form2
         'LblTimer
         '
         Me.LblTimer.AutoSize = True
+        Me.LblTimer.BackColor = System.Drawing.Color.Snow
         Me.LblTimer.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTimer.ForeColor = System.Drawing.Color.Brown
         Me.LblTimer.Location = New System.Drawing.Point(503, 94)
         Me.LblTimer.Name = "LblTimer"
         Me.LblTimer.Size = New System.Drawing.Size(134, 20)
@@ -64,7 +69,9 @@ Partial Class Form2
         'LblNombreErreurs
         '
         Me.LblNombreErreurs.AutoSize = True
+        Me.LblNombreErreurs.BackColor = System.Drawing.Color.Snow
         Me.LblNombreErreurs.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblNombreErreurs.ForeColor = System.Drawing.Color.Brown
         Me.LblNombreErreurs.Location = New System.Drawing.Point(503, 130)
         Me.LblNombreErreurs.Name = "LblNombreErreurs"
         Me.LblNombreErreurs.Size = New System.Drawing.Size(159, 20)
@@ -88,7 +95,9 @@ Partial Class Form2
         'labelMinuteur
         '
         Me.labelMinuteur.AutoSize = True
+        Me.labelMinuteur.BackColor = System.Drawing.Color.Snow
         Me.labelMinuteur.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labelMinuteur.ForeColor = System.Drawing.Color.Brown
         Me.labelMinuteur.Location = New System.Drawing.Point(634, 90)
         Me.labelMinuteur.Name = "labelMinuteur"
         Me.labelMinuteur.Size = New System.Drawing.Size(49, 24)
@@ -109,7 +118,9 @@ Partial Class Form2
         'lblNbErreursRestantes
         '
         Me.lblNbErreursRestantes.AutoSize = True
+        Me.lblNbErreursRestantes.BackColor = System.Drawing.Color.Snow
         Me.lblNbErreursRestantes.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNbErreursRestantes.ForeColor = System.Drawing.Color.Brown
         Me.lblNbErreursRestantes.Location = New System.Drawing.Point(662, 127)
         Me.lblNbErreursRestantes.Name = "lblNbErreursRestantes"
         Me.lblNbErreursRestantes.Size = New System.Drawing.Size(21, 24)
@@ -130,7 +141,7 @@ Partial Class Form2
         Me.TableLayoutPanelQuadrillage.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111!))
         Me.TableLayoutPanelQuadrillage.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111!))
         Me.TableLayoutPanelQuadrillage.Enabled = False
-        Me.TableLayoutPanelQuadrillage.Location = New System.Drawing.Point(21, 27)
+        Me.TableLayoutPanelQuadrillage.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanelQuadrillage.Name = "TableLayoutPanelQuadrillage"
         Me.TableLayoutPanelQuadrillage.RowCount = 9
         Me.TableLayoutPanelQuadrillage.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111!))
@@ -169,7 +180,7 @@ Partial Class Form2
         '
         'BtnPause
         '
-        Me.BtnPause.BackColor = System.Drawing.Color.White
+        Me.BtnPause.BackColor = System.Drawing.Color.Snow
         Me.BtnPause.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.BtnPause.Location = New System.Drawing.Point(623, 27)
         Me.BtnPause.Name = "BtnPause"
@@ -188,15 +199,33 @@ Partial Class Form2
         Me.lblNbFoisIndice.TabIndex = 108
         Me.lblNbFoisIndice.Text = "X3"
         '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Panel1.Controls.Add(Me.TableLayoutPanelQuadrillage)
+        Me.Panel1.Location = New System.Drawing.Point(21, 27)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(452, 435)
+        Me.Panel1.TabIndex = 109
+        '
+        'Panel2
+        '
+        Me.Panel2.BackColor = System.Drawing.Color.Snow
+        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel2.Location = New System.Drawing.Point(498, 73)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(200, 100)
+        Me.Panel2.TabIndex = 110
+        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackgroundImage = Global.SAE_IHM.My.Resources.Resources._1000_F_808390035_jPKb4fKJgcbTKKcLW292kakHfsgEqKGq1
         Me.ClientSize = New System.Drawing.Size(710, 474)
         Me.Controls.Add(Me.lblNbFoisIndice)
         Me.Controls.Add(Me.BtnPause)
         Me.Controls.Add(Me.BtnCommencer)
-        Me.Controls.Add(Me.TableLayoutPanelQuadrillage)
         Me.Controls.Add(Me.lblNbErreursRestantes)
         Me.Controls.Add(Me.BtnTerminer)
         Me.Controls.Add(Me.labelMinuteur)
@@ -205,8 +234,11 @@ Partial Class Form2
         Me.Controls.Add(Me.LblTimer)
         Me.Controls.Add(Me.BtnAbandonner)
         Me.Controls.Add(Me.BtnQuitter)
+        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.Panel2)
         Me.Name = "Form2"
         Me.Text = "Form1"
+        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -224,4 +256,6 @@ Partial Class Form2
     Friend WithEvents BtnQuitter As Button
     Friend WithEvents BtnPause As Button
     Friend WithEvents lblNbFoisIndice As Label
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Panel2 As Panel
 End Class

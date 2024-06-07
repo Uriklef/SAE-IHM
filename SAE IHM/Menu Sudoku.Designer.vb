@@ -49,7 +49,11 @@ Partial Class Form1
         '
         'LRegle
         '
-        Me.LRegle.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LRegle.BackColor = System.Drawing.Color.Transparent
+        Me.LRegle.Cursor = System.Windows.Forms.Cursors.No
+        Me.LRegle.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.LRegle.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LRegle.ForeColor = System.Drawing.Color.Snow
         Me.LRegle.Location = New System.Drawing.Point(20, 155)
         Me.LRegle.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LRegle.Name = "LRegle"
@@ -61,11 +65,13 @@ Partial Class Form1
         'LTitre
         '
         Me.LTitre.AutoSize = True
-        Me.LTitre.Font = New System.Drawing.Font("Papyrus", 28.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LTitre.Location = New System.Drawing.Point(182, 43)
+        Me.LTitre.BackColor = System.Drawing.Color.Transparent
+        Me.LTitre.Font = New System.Drawing.Font("Showcard Gothic", 48.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LTitre.ForeColor = System.Drawing.Color.Brown
+        Me.LTitre.Location = New System.Drawing.Point(166, 29)
         Me.LTitre.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LTitre.Name = "LTitre"
-        Me.LTitre.Size = New System.Drawing.Size(259, 60)
+        Me.LTitre.Size = New System.Drawing.Size(298, 79)
         Me.LTitre.TabIndex = 2
         Me.LTitre.Text = "SUDOKU"
         Me.LTitre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -85,11 +91,12 @@ Partial Class Form1
         '
         Me.LScores.AutoSize = True
         Me.LScores.Cursor = System.Windows.Forms.Cursors.Default
-        Me.LScores.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LScores.Location = New System.Drawing.Point(148, 13)
+        Me.LScores.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LScores.ForeColor = System.Drawing.Color.Brown
+        Me.LScores.Location = New System.Drawing.Point(124, 11)
         Me.LScores.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LScores.Name = "LScores"
-        Me.LScores.Size = New System.Drawing.Size(232, 48)
+        Me.LScores.Size = New System.Drawing.Size(308, 50)
         Me.LScores.TabIndex = 9
         Me.LScores.Text = "Joueurs         |         Temps" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "-------------------------------------" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.LScores.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -119,61 +126,70 @@ Partial Class Form1
         'PMenu
         '
         Me.PMenu.BackColor = System.Drawing.Color.Transparent
+        Me.PMenu.Controls.Add(Me.BJouer)
         Me.PMenu.Controls.Add(Me.BLeave)
         Me.PMenu.Controls.Add(Me.BRegle)
         Me.PMenu.Controls.Add(Me.BLeaderBoard)
-        Me.PMenu.Controls.Add(Me.BJouer)
         Me.PMenu.Cursor = System.Windows.Forms.Cursors.Default
         Me.PMenu.Location = New System.Drawing.Point(209, 114)
         Me.PMenu.Margin = New System.Windows.Forms.Padding(2)
         Me.PMenu.Name = "PMenu"
-        Me.PMenu.Size = New System.Drawing.Size(214, 266)
+        Me.PMenu.Size = New System.Drawing.Size(214, 291)
         Me.PMenu.TabIndex = 13
         '
         'BLeave
         '
+        Me.BLeave.BackColor = System.Drawing.Color.Snow
+        Me.BLeave.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.BLeave.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BLeave.Location = New System.Drawing.Point(40, 206)
+        Me.BLeave.Location = New System.Drawing.Point(40, 223)
         Me.BLeave.Margin = New System.Windows.Forms.Padding(2)
         Me.BLeave.Name = "BLeave"
         Me.BLeave.Size = New System.Drawing.Size(137, 47)
         Me.BLeave.TabIndex = 8
         Me.BLeave.Text = "Quitter"
-        Me.BLeave.UseVisualStyleBackColor = True
+        Me.BLeave.UseVisualStyleBackColor = False
         '
         'BRegle
         '
+        Me.BRegle.BackColor = System.Drawing.Color.Snow
         Me.BRegle.Cursor = System.Windows.Forms.Cursors.Default
+        Me.BRegle.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.BRegle.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BRegle.Location = New System.Drawing.Point(40, 143)
+        Me.BRegle.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.BRegle.Location = New System.Drawing.Point(40, 156)
         Me.BRegle.Margin = New System.Windows.Forms.Padding(2)
         Me.BRegle.Name = "BRegle"
         Me.BRegle.Size = New System.Drawing.Size(137, 47)
         Me.BRegle.TabIndex = 6
         Me.BRegle.Text = "Règles"
-        Me.BRegle.UseVisualStyleBackColor = True
+        Me.BRegle.UseVisualStyleBackColor = False
         '
         'BLeaderBoard
         '
+        Me.BLeaderBoard.BackColor = System.Drawing.Color.Snow
+        Me.BLeaderBoard.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.BLeaderBoard.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BLeaderBoard.Location = New System.Drawing.Point(40, 74)
+        Me.BLeaderBoard.Location = New System.Drawing.Point(40, 88)
         Me.BLeaderBoard.Margin = New System.Windows.Forms.Padding(2)
         Me.BLeaderBoard.Name = "BLeaderBoard"
         Me.BLeaderBoard.Size = New System.Drawing.Size(137, 50)
         Me.BLeaderBoard.TabIndex = 5
         Me.BLeaderBoard.Text = "Tableau des scores"
-        Me.BLeaderBoard.UseVisualStyleBackColor = True
+        Me.BLeaderBoard.UseVisualStyleBackColor = False
         '
         'BJouer
         '
+        Me.BJouer.BackColor = System.Drawing.Color.Snow
+        Me.BJouer.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.BJouer.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BJouer.Location = New System.Drawing.Point(40, 11)
+        Me.BJouer.Location = New System.Drawing.Point(40, 20)
         Me.BJouer.Margin = New System.Windows.Forms.Padding(2)
         Me.BJouer.Name = "BJouer"
-        Me.BJouer.Size = New System.Drawing.Size(137, 42)
+        Me.BJouer.Size = New System.Drawing.Size(137, 50)
         Me.BJouer.TabIndex = 4
         Me.BJouer.Text = "Lancer une partie"
-        Me.BJouer.UseVisualStyleBackColor = True
+        Me.BJouer.UseVisualStyleBackColor = False
         '
         'BTrierNoms
         '
@@ -187,6 +203,7 @@ Partial Class Form1
         '
         'PLeaderBoard
         '
+        Me.PLeaderBoard.BackColor = System.Drawing.Color.Transparent
         Me.PLeaderBoard.Controls.Add(Me.CBNoms)
         Me.PLeaderBoard.Controls.Add(Me.BStats)
         Me.PLeaderBoard.Controls.Add(Me.Label1)
@@ -195,7 +212,7 @@ Partial Class Form1
         Me.PLeaderBoard.Controls.Add(Me.LBMeilleursScores)
         Me.PLeaderBoard.Controls.Add(Me.LBNoms)
         Me.PLeaderBoard.Controls.Add(Me.LScores)
-        Me.PLeaderBoard.Location = New System.Drawing.Point(54, 125)
+        Me.PLeaderBoard.Location = New System.Drawing.Point(23, 144)
         Me.PLeaderBoard.Margin = New System.Windows.Forms.Padding(2)
         Me.PLeaderBoard.Name = "PLeaderBoard"
         Me.PLeaderBoard.Size = New System.Drawing.Size(545, 219)
@@ -223,10 +240,12 @@ Partial Class Form1
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(20, 106)
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.Brown
+        Me.Label1.Location = New System.Drawing.Point(16, 113)
         Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(116, 13)
+        Me.Label1.Size = New System.Drawing.Size(132, 15)
         Me.Label1.TabIndex = 16
         Me.Label1.Text = "Rechercher un joueur :"
         '
@@ -265,7 +284,7 @@ Partial Class Form1
         '
         'BtnCouperSon
         '
-        Me.BtnCouperSon.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.BtnCouperSon.BackColor = System.Drawing.Color.Snow
         Me.BtnCouperSon.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.BtnCouperSon.Location = New System.Drawing.Point(12, 12)
         Me.BtnCouperSon.Name = "BtnCouperSon"
@@ -278,6 +297,8 @@ Partial Class Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.BackgroundImage = Global.SAE_IHM.My.Resources.Resources._1000_F_808390035_jPKb4fKJgcbTKKcLW292kakHfsgEqKGq1
         Me.ClientSize = New System.Drawing.Size(643, 454)
         Me.Controls.Add(Me.BtnCouperSon)
         Me.Controls.Add(Me.LCreateurs)

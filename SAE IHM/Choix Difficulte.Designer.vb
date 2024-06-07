@@ -29,16 +29,20 @@ Partial Class Choix_Difficulte
         Me.RadioButton4Minutes = New System.Windows.Forms.RadioButton()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnLancer = New System.Windows.Forms.Button()
+        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Papyrus", 27.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(62, 9)
+        Me.Label1.BackColor = System.Drawing.Color.Snow
+        Me.Label1.Font = New System.Drawing.Font("Impact", 36.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.Brown
+        Me.Label1.Location = New System.Drawing.Point(6, 5)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(304, 58)
+        Me.Label1.Size = New System.Drawing.Size(345, 60)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Choix Difficulté :"
         '
@@ -93,41 +97,54 @@ Partial Class Choix_Difficulte
         'Panel1
         '
         Me.Panel1.AccessibleName = "test"
-        Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Panel1.BackColor = System.Drawing.Color.Snow
+        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Controls.Add(Me.RadioButton4Minutes)
         Me.Panel1.Controls.Add(Me.RadioButton20Minutes)
         Me.Panel1.Controls.Add(Me.RadioButton7Minutes)
         Me.Panel1.Controls.Add(Me.RadioButton15Minutes)
-        Me.Panel1.Location = New System.Drawing.Point(108, 79)
+        Me.Panel1.Location = New System.Drawing.Point(104, 96)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(207, 197)
+        Me.Panel1.Size = New System.Drawing.Size(207, 199)
         Me.Panel1.TabIndex = 10
         '
         'btnLancer
         '
-        Me.btnLancer.BackColor = System.Drawing.Color.White
+        Me.btnLancer.BackColor = System.Drawing.Color.Snow
         Me.btnLancer.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnLancer.Location = New System.Drawing.Point(127, 301)
+        Me.btnLancer.Location = New System.Drawing.Point(127, 312)
         Me.btnLancer.Name = "btnLancer"
         Me.btnLancer.Size = New System.Drawing.Size(158, 67)
         Me.btnLancer.TabIndex = 11
         Me.btnLancer.Text = "LANCER LA PARTIE"
         Me.btnLancer.UseVisualStyleBackColor = False
         '
+        'Panel2
+        '
+        Me.Panel2.BackColor = System.Drawing.Color.Snow
+        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel2.Controls.Add(Me.Label1)
+        Me.Panel2.Location = New System.Drawing.Point(38, 9)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(356, 72)
+        Me.Panel2.TabIndex = 12
+        '
         'Choix_Difficulte
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackgroundImage = Global.SAE_IHM.My.Resources.Resources._1000_F_808390035_jPKb4fKJgcbTKKcLW292kakHfsgEqKGq1
         Me.ClientSize = New System.Drawing.Size(424, 391)
         Me.Controls.Add(Me.btnLancer)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.Panel2)
         Me.Name = "Choix_Difficulte"
         Me.Text = "Choix_Difficulte"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
@@ -138,4 +155,5 @@ Partial Class Choix_Difficulte
     Friend WithEvents RadioButton4Minutes As RadioButton
     Friend WithEvents Panel1 As Panel
     Friend WithEvents btnLancer As Button
+    Friend WithEvents Panel2 As Panel
 End Class

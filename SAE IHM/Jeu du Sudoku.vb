@@ -11,6 +11,18 @@ Public Class Form2
         tempsMax = time
     End Sub
 
+    Public Class FormAvecTransparence
+        Inherits Form
+
+        Protected Overrides ReadOnly Property CreateParams As CreateParams
+            Get
+                Dim cp As CreateParams = MyBase.CreateParams
+                cp.ExStyle = cp.ExStyle Or &H20 ' Ajouter le style WS_EX_TRANSPARENT
+                Return cp
+            End Get
+        End Property
+    End Class
+
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
         If tempsMax > 0 Then
             tempsMax -= 1
@@ -86,6 +98,12 @@ Public Class Form2
         Next
         grille = GenerateSudoku()
         ColorierRegions()
+
+        ' Définition de l'opacité souhaitée (entre 0 et 1)
+        Dim nouvelleOpacite As Double = 0.6 ' Opacité à 60%
+
+        ' Appliquer l'opacité au panel
+        Panel1.BackColor = Color.FromArgb(CInt(nouvelleOpacite * 255), Panel1.BackColor.R, Panel1.BackColor.G, Panel1.BackColor.B)
     End Sub
 
 
@@ -210,6 +228,7 @@ Public Class Form2
         TableLayoutPanelQuadrillage.Enabled = False
         BtnTerminer.Enabled = False
         BtnIndice.Enabled = False
+        lblNbFoisIndice.Enabled = False
         Timer.Stop()
         ColorierRegions()
     End Sub
@@ -393,6 +412,12 @@ Public Class Form2
         If formulairePause.DialogResult = DialogResult.OK Then
             Timer.Start()
             Me.Show()
+        End If
+    End Sub
+
+    Private Sub lblNbFoisIndice_Click(sender As Object, e As EventArgs) Handles lblNbFoisIndice.Click
+        If nbErreursPossibles = 0 Then
+            lblNbFoisIndice.Enabled = False
         End If
     End Sub
 End Class

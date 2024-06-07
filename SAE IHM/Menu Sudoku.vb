@@ -74,7 +74,7 @@ Public Class Form1
     End Sub
 
     Private Sub Button_MouseLeave(sender As Object, e As EventArgs) Handles BRetour.MouseLeave, BJouer.MouseLeave, BLeaderBoard.MouseLeave, BLeave.MouseLeave, BRegle.MouseLeave
-        sender.BackColor = Color.Transparent
+        sender.BackColor = Color.Snow
     End Sub
 
     Private Sub BRegle_Click(sender As Object, e As EventArgs) Handles BRegle.Click
