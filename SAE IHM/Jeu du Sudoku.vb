@@ -160,7 +160,7 @@ Public Class Form2
         For i As Integer = 0 To 8
             For j As Integer = 0 To 8
                 Dim tb As TextBox = GetTextBox(i, j)
-                If Not GetTextBox(i, j).ReadOnly Then
+                If GetTextBox(i, j).Text = "" Then
                     Return False
                 End If
             Next
@@ -233,18 +233,15 @@ Public Class Form2
             textBox.BackColor = Color.LightGreen
             textBox.ReadOnly = True
 
+            If grilleComplete() Then
+                BtnTerminer.Show()
+            Else
+                BtnTerminer.Hide()
+            End If
+
             ' Désactiver le mode indice après avoir affiché un indice
             modeIndice = False
 
-            ' Rendre les TextBox éditables à nouveau
-            For i As Integer = 0 To 8
-                For j As Integer = 0 To 8
-                    Dim tb As TextBox = GetTextBox(i, j)
-                    If tb IsNot Nothing Then
-                        tb.ReadOnly = False
-                    End If
-                Next
-            Next
         Else
             ' Restaurer les couleurs des régions avant de les colorier en bleu
             RestaurerCouleurs()
