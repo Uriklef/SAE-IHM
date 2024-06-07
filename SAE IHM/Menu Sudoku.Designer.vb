@@ -42,6 +42,7 @@ Partial Class Form1
         Me.BTriScore = New System.Windows.Forms.Button()
         Me.BCreateurs = New System.Windows.Forms.Button()
         Me.LCreateurs = New System.Windows.Forms.Label()
+        Me.BtnCouperSon = New System.Windows.Forms.Button()
         Me.PMenu.SuspendLayout()
         Me.PLeaderBoard.SuspendLayout()
         Me.SuspendLayout()
@@ -262,11 +263,23 @@ Partial Class Form1
         Me.LCreateurs.Text = "Créateurs de l'application : " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " - Rayan Meri" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " - Oskar Jakubczyk" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " - Tony Olivier" &
     "a" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " - Arnaud Sahat"
         '
+        'BtnCouperSon
+        '
+        Me.BtnCouperSon.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.BtnCouperSon.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.BtnCouperSon.Location = New System.Drawing.Point(12, 12)
+        Me.BtnCouperSon.Name = "BtnCouperSon"
+        Me.BtnCouperSon.Size = New System.Drawing.Size(109, 38)
+        Me.BtnCouperSon.TabIndex = 19
+        Me.BtnCouperSon.Text = "Couper/Remettre Le Son"
+        Me.BtnCouperSon.UseVisualStyleBackColor = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(643, 454)
+        Me.Controls.Add(Me.BtnCouperSon)
         Me.Controls.Add(Me.LCreateurs)
         Me.Controls.Add(Me.BCreateurs)
         Me.Controls.Add(Me.PLeaderBoard)
@@ -304,4 +317,5 @@ Partial Class Form1
     Friend WithEvents CBNoms As ComboBox
     Friend WithEvents BCreateurs As Button
     Friend WithEvents LCreateurs As Label
+    Friend WithEvents BtnCouperSon As Button
 End Class

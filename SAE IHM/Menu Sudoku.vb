@@ -2,12 +2,21 @@ Imports System.Drawing.Drawing2D
 
 Public Class Form1
 
+    Dim musiqueActive = True
+
     Private Sub Menu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LRegle.Hide()
         BRetour.Hide()
         PLeaderBoard.Hide()
         LCreateurs.Hide()
 
+        MettreMusique()
+
+        AddHandler BCreateurs.Paint, AddressOf Me.BCreateursPaint
+        BCreateurs.Size = New Size(30, 30)
+    End Sub
+
+    Private Sub MettreMusique()
         Dim audioStream As System.IO.Stream = My.Resources.opNami
 
         If audioStream IsNot Nothing Then
@@ -20,9 +29,6 @@ Public Class Form1
         Else
             MessageBox.Show("Le fichier audio n'est pas disponible.")
         End If
-
-        AddHandler BCreateurs.Paint, AddressOf Me.BCreateursPaint
-        BCreateurs.Size = New Size(30, 30)
     End Sub
 
     Private Sub BCreateursPaint(sender As Object, e As PaintEventArgs)
@@ -173,5 +179,15 @@ Public Class Form1
         LCreateurs.Refresh()
         System.Threading.Thread.Sleep(4000)
         LCreateurs.Hide()
+    End Sub
+
+    Private Sub BtnCouperSon_Click(sender As Object, e As EventArgs) Handles BtnCouperSon.Click
+        If musiqueActive = True Then
+            My.Computer.Audio.Stop()
+            musiqueActive = False
+        Else
+            MettreMusique()
+            musiqueActive = True
+        End If
     End Sub
 End Class
