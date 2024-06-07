@@ -42,7 +42,7 @@ Public Class Form2
             BtnAbandonner.Enabled = True
             Timer.Start()
             ActualisationLabel()
-            AfficherSudoku(grille, 85)
+            AfficherSudoku(grille, 117)
             TableLayoutPanelQuadrillage.Enabled = True
         End If
     End Sub
@@ -71,14 +71,14 @@ Public Class Form2
         For ligne As Integer = 0 To 8
             For colonne As Integer = 0 To 8
                 Dim textbox As New TextBox With {
-                    .BackColor = Color.White,
-                    .Dock = DockStyle.Fill,
-                    .BorderStyle = BorderStyle.None,
-                    .Multiline = True,
-                    .TextAlign = HorizontalAlignment.Center,
-                    .MaxLength = 1,
-                    .Font = New Font("FontFamily", 25)
-                }
+                .BackColor = Color.White,
+                .Dock = DockStyle.Fill,
+                .BorderStyle = BorderStyle.None,
+                .Multiline = True,
+                .TextAlign = HorizontalAlignment.Center,
+                .MaxLength = 1,
+                .Font = New Font("FontFamily", 25)
+            }
                 TableLayoutPanelQuadrillage.Controls.Add(textbox, colonne, ligne)
                 AddHandler textbox.KeyPress, AddressOf TextBox_KeyPress
                 AddHandler textbox.MouseClick, AddressOf TextBox_Click
@@ -88,15 +88,6 @@ Public Class Form2
         ColorierRegions()
     End Sub
 
-    Private Function grilleComplete()
-        For i As Integer = 0 To 80
-            Dim item As String = TableLayoutPanelQuadrillage.Controls.Item(i).Text
-            If item = " " Then
-                Return False
-            End If
-        Next
-        Return True
-    End Function
 
     Private Sub BtnQuitter_Click(sender As Object, e As EventArgs) Handles BtnAbandonner.Click
         Dim resultat As MsgBoxResult = MsgBox("Voulez vous vraiment abandonner ?", vbYesNo)
@@ -129,34 +120,54 @@ Public Class Form2
     End Sub
 
     Private Sub TextBox_KeyPress(sender As Object, e As KeyPressEventArgs)
-        If Not Char.IsDigit(e.KeyChar) AndAlso e.KeyChar <> vbBack Then
-            e.Handled = True
-        ElseIf Char.IsDigit(e.KeyChar) Then
-            Dim textBox As TextBox = DirectCast(sender, TextBox)
-            Dim position As TableLayoutPanelCellPosition = TableLayoutPanelQuadrillage.GetPositionFromControl(textBox)
-            Dim ligne As Integer = position.Row
-            Dim colonne As Integer = position.Column
+        If Not sender.ReadOnly Then
+            If Not Char.IsDigit(e.KeyChar) AndAlso e.KeyChar <> vbBack Then
+                e.Handled = True
+            ElseIf Char.IsDigit(e.KeyChar) Then
+                Dim textBox As TextBox = DirectCast(sender, TextBox)
+                Dim position As TableLayoutPanelCellPosition = TableLayoutPanelQuadrillage.GetPositionFromControl(textBox)
+                Dim ligne As Integer = position.Row
+                Dim colonne As Integer = position.Column
 
-            ' Vérifiez si la réponse est correcte
-            If grille(ligne, colonne).ToString() = e.KeyChar.ToString() Then
-                textBox.BackColor = Color.LightGreen
-            Else
-                textBox.BackColor = Color.Red
-                nbErreursPossibles -= 1
-            End If
+                ' Vérifiez si la réponse est correcte
+                If grille(ligne, colonne).ToString() = e.KeyChar.ToString() Then
+                    textBox.BackColor = Color.LightGreen
+                    textBox.Text = e.KeyChar
+                    textBox.ReadOnly = True
+                    RemoveHandler textBox.KeyPress, AddressOf TextBox_KeyPress
+                Else
+                    textBox.BackColor = Color.Red
+                    nbErreursPossibles -= 1
+                End If
 
-            ' Vérifiez si le nombre maximum d'erreurs est atteint
-            If nbErreursPossibles = 0 Then
-                MsgBox("Tu as fais trop d'erreurs, la partie est perdue")
-                ReinitialiserPartie()
-            End If
+                ' Vérifiez si le nombre maximum d'erreurs est atteint
+                If nbErreursPossibles = 0 Then
+                    MsgBox("Tu as fais trop d'erreurs, la partie est perdue")
+                    ReinitialiserPartie()
+                End If
 
-            ' Vérifiez si la grille est complète
-            If grilleComplete() Then
-                BtnTerminer.Show()
+                ' Vérifiez si la grille est complète
+                If grilleComplete() Then
+                    BtnTerminer.Show()
+                Else
+                    BtnTerminer.Hide()
+                End If
             End If
         End If
     End Sub
+
+    Private Function grilleComplete() As Boolean
+        For i As Integer = 0 To 8
+            For j As Integer = 0 To 8
+                Dim tb As TextBox = GetTextBox(i, j)
+                If Not GetTextBox(i, j).ReadOnly Then
+                    Return False
+                End If
+            Next
+        Next
+        Return True
+    End Function
+
 
     Private Sub BtnIndice_Click(sender As Object, e As EventArgs) Handles BtnIndice.Click
         If Not partieActive Then
@@ -168,7 +179,6 @@ Public Class Form2
             MessageBox.Show("Vous avez épuisé tous vos indices")
             BtnIndice.Enabled = False
             lblNbFoisIndice.Enabled = False
-
             Return
         End If
 
@@ -220,9 +230,8 @@ Public Class Form2
             ' Afficher le chiffre correct et colorier le texte en jaune
             textBox.Text = grille(ligne, colonne).ToString()
             textBox.ForeColor = Color.Yellow
-            Dim correctChiffre As Char = grille(ligne, colonne).ToString()(0)
-            Dim eKeyPress As New KeyPressEventArgs(correctChiffre)
-            TextBox_KeyPress(textBox, eKeyPress)
+            textBox.BackColor = Color.LightGreen
+            textBox.ReadOnly = True
 
             ' Désactiver le mode indice après avoir affiché un indice
             modeIndice = False
@@ -315,7 +324,7 @@ Public Class Form2
 
     End Sub
 
-    Private Sub AfficherSudoku(ByVal grille As Integer(,), ByVal nbMax As Integer)
+    Private Sub AfficherSudoku(grille As Integer(,), nbMax As Integer)
         Dim grilleMasque As Integer(,) = SudokuMasker.MaskSudoku(grille, nbMax)
         For ligne As Integer = 0 To 8
             For colonne As Integer = 0 To 8
@@ -324,6 +333,7 @@ Public Class Form2
                 If Chiffre <> 0 Then
                     textBox.Text = grilleMasque(ligne, colonne).ToString()
                     textBox.ReadOnly = True
+                    RemoveHandler textBox.KeyPress, AddressOf TextBox_KeyPress
                 End If
             Next
         Next
@@ -388,5 +398,4 @@ Public Class Form2
             Me.Show()
         End If
     End Sub
-
 End Class
