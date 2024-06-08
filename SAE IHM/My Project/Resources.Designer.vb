@@ -61,6 +61,16 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Recherche une ressource localisée de type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property fond() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("fond", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Recherche une ressource localisée de type System.IO.UnmanagedMemoryStream semblable à System.IO.MemoryStream.
         '''</summary>
         Friend ReadOnly Property opNami() As System.IO.UnmanagedMemoryStream
