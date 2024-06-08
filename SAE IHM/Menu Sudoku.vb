@@ -128,34 +128,51 @@ Public Class Form1
     End Sub
 
     Private Sub BTrierNoms_Click(sender As Object, e As EventArgs) Handles BTrierNoms.Click
-        Dim items1 As List(Of String) = LBNoms.Items.Cast(Of String)().ToList()
-        Dim items2 As List(Of String) = LBMeilleursScores.Items.Cast(Of String)().ToList()
-        Dim pairedItems As List(Of KeyValuePair(Of String, String)) = items1.Zip(items2, Function(a, b) New KeyValuePair(Of String, String)(a, b)).ToList()
-        pairedItems.Sort(Function(x, y) x.Key.CompareTo(y.Key))
+        Dim scores As List(Of String) = LBMeilleursScores.Items.Cast(Of String)().ToList()
+        Dim names As List(Of String) = LBNoms.Items.Cast(Of String)().ToList()
+        Dim difficulte As List(Of String) = LBDifficulte.Items.Cast(Of String)().ToList()
 
-        LBNoms.Items.Clear()
+        Dim pairedItems As List(Of Tuple(Of String, String, String)) = scores.
+        Zip(names, Function(score, name) Tuple.Create(score, name)).
+        Zip(difficulte, Function(pair, third) Tuple.Create(pair.Item1, pair.Item2, third)).
+        ToList()
+
+        pairedItems.Sort(Function(x, y) x.Item2.CompareTo(y.Item2))
+
         LBMeilleursScores.Items.Clear()
+        LBNoms.Items.Clear()
+        LBDifficulte.Items.Clear()
 
-        For Each pair As KeyValuePair(Of String, String) In pairedItems
-            LBNoms.Items.Add(pair.Key)
-            LBMeilleursScores.Items.Add(pair.Value)
+        For Each pair As Tuple(Of String, String, String) In pairedItems
+            LBMeilleursScores.Items.Add(pair.Item1)
+            LBNoms.Items.Add(pair.Item2)
+            LBDifficulte.Items.Add(pair.Item3)
         Next
     End Sub
 
     Private Sub BTriScore_Click(sender As Object, e As EventArgs) Handles BTriScore.Click
-        Dim items1 As List(Of String) = LBMeilleursScores.Items.Cast(Of String)().ToList()
-        Dim items2 As List(Of String) = LBNoms.Items.Cast(Of String)().ToList()
-        Dim pairedItems As List(Of KeyValuePair(Of String, String)) = items1.Zip(items2, Function(a, b) New KeyValuePair(Of String, String)(a, b)).ToList()
-        pairedItems.Sort(Function(x, y) x.Key.CompareTo(y.Key))
+        Dim scores As List(Of String) = LBMeilleursScores.Items.Cast(Of String)().ToList()
+        Dim names As List(Of String) = LBNoms.Items.Cast(Of String)().ToList()
+        Dim difficulte As List(Of String) = LBDifficulte.Items.Cast(Of String)().ToList()
 
-        LBNoms.Items.Clear()
+        Dim pairedItems As List(Of Tuple(Of String, String, String)) = scores.
+        Zip(names, Function(score, name) Tuple.Create(score, name)).
+        Zip(difficulte, Function(pair, third) Tuple.Create(pair.Item1, pair.Item2, third)).
+        ToList()
+
+        pairedItems.Sort(Function(x, y) x.Item1.CompareTo(y.Item1))
+
         LBMeilleursScores.Items.Clear()
+        LBNoms.Items.Clear()
+        LBDifficulte.Items.Clear()
 
-        For Each pair As KeyValuePair(Of String, String) In pairedItems
-            LBMeilleursScores.Items.Add(pair.Key)
-            LBNoms.Items.Add(pair.Value)
+        For Each pair As Tuple(Of String, String, String) In pairedItems
+            LBMeilleursScores.Items.Add(pair.Item1)
+            LBNoms.Items.Add(pair.Item2)
+            LBDifficulte.Items.Add(pair.Item3)
         Next
     End Sub
+
 
     Private Sub CBNoms_KeyPress(sender As Object, e As KeyPressEventArgs) Handles CBNoms.KeyPress
         If Char.IsDigit(e.KeyChar) And e.KeyChar <> vbBack Then
@@ -202,13 +219,5 @@ Public Class Form1
             MettreMusique()
             musiqueActive = True
         End If
-    End Sub
-
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
-
-    End Sub
-
-    Private Sub LRegle_Click(sender As Object, e As EventArgs) Handles LRegle.Click
-
     End Sub
 End Class
