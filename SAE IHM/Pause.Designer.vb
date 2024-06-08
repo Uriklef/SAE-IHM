@@ -121,7 +121,7 @@ Partial Class Pause
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.SAE_IHM.My.Resources.fond
+        Me.BackgroundImage = Global.SAE_IHM.My.Resources.Resources.fond
         Me.ClientSize = New System.Drawing.Size(370, 354)
         Me.Controls.Add(Me.lblNbErreursRestantes)
         Me.Controls.Add(Me.labelMinuteur)
@@ -132,6 +132,7 @@ Partial Class Pause
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "Pause"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Pause"
         Me.ResumeLayout(False)
         Me.PerformLayout()

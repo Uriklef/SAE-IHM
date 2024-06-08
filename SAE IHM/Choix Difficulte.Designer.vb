@@ -147,6 +147,7 @@ Partial Class Choix_Difficulte
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel2)
         Me.Name = "Choix_Difficulte"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Choix_Difficulte"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()

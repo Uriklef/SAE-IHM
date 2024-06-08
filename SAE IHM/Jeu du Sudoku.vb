@@ -117,10 +117,7 @@ Public Class Form2
         grille = GenerateSudoku()
         ColorierRegions()
 
-        ' Définition de l'opacité souhaitée (entre 0 et 1)
-        Dim nouvelleOpacite As Double = 0.6 ' Opacité à 60%
-
-        ' Appliquer l'opacité au panel
+        Dim nouvelleOpacite As Double = 0.6 ' Opacité à 70%
         Panel1.BackColor = Color.FromArgb(CInt(nouvelleOpacite * 255), Panel1.BackColor.R, Panel1.BackColor.G, Panel1.BackColor.B)
     End Sub
 
@@ -407,9 +404,9 @@ Public Class Form2
                         Dim tb As TextBox = GetTextBox(i, j)
                         If tb IsNot Nothing AndAlso tb.BackColor <> Color.Red AndAlso tb.BackColor <> Color.LightGreen Then
                             If (regionLigne + regionColonne) Mod 2 = 0 Then
-                                tb.BackColor = Color.LightGray
+                                tb.BackColor = Color.RosyBrown
                             Else
-                                tb.BackColor = Color.White
+                                tb.BackColor = Color.Snow
                             End If
                         End If
                     Next
@@ -453,5 +450,9 @@ Public Class Form2
         If nbErreursPossibles = 0 Then
             lblNbFoisIndice.Enabled = False
         End If
+    End Sub
+
+    Private Sub LblNombreErreurs_Click(sender As Object, e As EventArgs) Handles LblNombreErreurs.Click
+
     End Sub
 End Class

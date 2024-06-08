@@ -52,7 +52,7 @@ Partial Class Form1
         'LRegle
         '
         Me.LRegle.BackColor = System.Drawing.Color.Transparent
-        Me.LRegle.Cursor = System.Windows.Forms.Cursors.No
+        Me.LRegle.Cursor = System.Windows.Forms.Cursors.Default
         Me.LRegle.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.LRegle.Font = New System.Drawing.Font("Impact", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LRegle.ForeColor = System.Drawing.Color.Snow
@@ -84,7 +84,7 @@ Partial Class Form1
         Me.BRetour.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.BRetour.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BRetour.Location = New System.Drawing.Point(17, 403)
-        Me.BRetour.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.BRetour.Margin = New System.Windows.Forms.Padding(2)
         Me.BRetour.Name = "BRetour"
         Me.BRetour.Size = New System.Drawing.Size(94, 36)
         Me.BRetour.TabIndex = 8
@@ -97,7 +97,7 @@ Partial Class Form1
         Me.LBNoms.FormattingEnabled = True
         Me.LBNoms.ItemHeight = 17
         Me.LBNoms.Location = New System.Drawing.Point(139, 85)
-        Me.LBNoms.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.LBNoms.Margin = New System.Windows.Forms.Padding(2)
         Me.LBNoms.Name = "LBNoms"
         Me.LBNoms.Size = New System.Drawing.Size(100, 89)
         Me.LBNoms.TabIndex = 11
@@ -108,7 +108,7 @@ Partial Class Form1
         Me.LBMeilleursScores.FormattingEnabled = True
         Me.LBMeilleursScores.ItemHeight = 17
         Me.LBMeilleursScores.Location = New System.Drawing.Point(248, 85)
-        Me.LBMeilleursScores.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.LBMeilleursScores.Margin = New System.Windows.Forms.Padding(2)
         Me.LBMeilleursScores.Name = "LBMeilleursScores"
         Me.LBMeilleursScores.Size = New System.Drawing.Size(100, 89)
         Me.LBMeilleursScores.TabIndex = 12
@@ -122,7 +122,7 @@ Partial Class Form1
         Me.PMenu.Controls.Add(Me.BLeaderBoard)
         Me.PMenu.Cursor = System.Windows.Forms.Cursors.Default
         Me.PMenu.Location = New System.Drawing.Point(209, 114)
-        Me.PMenu.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PMenu.Margin = New System.Windows.Forms.Padding(2)
         Me.PMenu.Name = "PMenu"
         Me.PMenu.Size = New System.Drawing.Size(214, 291)
         Me.PMenu.TabIndex = 13
@@ -133,7 +133,7 @@ Partial Class Form1
         Me.BJouer.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.BJouer.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BJouer.Location = New System.Drawing.Point(40, 20)
-        Me.BJouer.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.BJouer.Margin = New System.Windows.Forms.Padding(2)
         Me.BJouer.Name = "BJouer"
         Me.BJouer.Size = New System.Drawing.Size(137, 50)
         Me.BJouer.TabIndex = 4
@@ -146,7 +146,7 @@ Partial Class Form1
         Me.BLeave.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.BLeave.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BLeave.Location = New System.Drawing.Point(40, 223)
-        Me.BLeave.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.BLeave.Margin = New System.Windows.Forms.Padding(2)
         Me.BLeave.Name = "BLeave"
         Me.BLeave.Size = New System.Drawing.Size(137, 47)
         Me.BLeave.TabIndex = 8
@@ -161,7 +161,7 @@ Partial Class Form1
         Me.BRegle.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BRegle.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.BRegle.Location = New System.Drawing.Point(40, 156)
-        Me.BRegle.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.BRegle.Margin = New System.Windows.Forms.Padding(2)
         Me.BRegle.Name = "BRegle"
         Me.BRegle.Size = New System.Drawing.Size(137, 47)
         Me.BRegle.TabIndex = 6
@@ -174,7 +174,7 @@ Partial Class Form1
         Me.BLeaderBoard.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.BLeaderBoard.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BLeaderBoard.Location = New System.Drawing.Point(40, 88)
-        Me.BLeaderBoard.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.BLeaderBoard.Margin = New System.Windows.Forms.Padding(2)
         Me.BLeaderBoard.Name = "BLeaderBoard"
         Me.BLeaderBoard.Size = New System.Drawing.Size(137, 50)
         Me.BLeaderBoard.TabIndex = 5
@@ -184,7 +184,7 @@ Partial Class Form1
         'BTrierNoms
         '
         Me.BTrierNoms.Location = New System.Drawing.Point(513, 85)
-        Me.BTrierNoms.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.BTrierNoms.Margin = New System.Windows.Forms.Padding(2)
         Me.BTrierNoms.Name = "BTrierNoms"
         Me.BTrierNoms.Size = New System.Drawing.Size(99, 23)
         Me.BTrierNoms.TabIndex = 14
@@ -203,8 +203,8 @@ Partial Class Form1
         Me.PLeaderBoard.Controls.Add(Me.LBMeilleursScores)
         Me.PLeaderBoard.Controls.Add(Me.LBNoms)
         Me.PLeaderBoard.Controls.Add(Me.LScores)
-        Me.PLeaderBoard.Location = New System.Drawing.Point(2, 116)
-        Me.PLeaderBoard.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PLeaderBoard.Location = New System.Drawing.Point(1, 116)
+        Me.PLeaderBoard.Margin = New System.Windows.Forms.Padding(2)
         Me.PLeaderBoard.Name = "PLeaderBoard"
         Me.PLeaderBoard.Size = New System.Drawing.Size(640, 268)
         Me.PLeaderBoard.TabIndex = 15
@@ -215,7 +215,7 @@ Partial Class Form1
         Me.LBDifficulte.FormattingEnabled = True
         Me.LBDifficulte.ItemHeight = 17
         Me.LBDifficulte.Location = New System.Drawing.Point(358, 85)
-        Me.LBDifficulte.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.LBDifficulte.Margin = New System.Windows.Forms.Padding(2)
         Me.LBDifficulte.Name = "LBDifficulte"
         Me.LBDifficulte.Size = New System.Drawing.Size(129, 89)
         Me.LBDifficulte.TabIndex = 19
@@ -224,7 +224,7 @@ Partial Class Form1
         '
         Me.CBNoms.FormattingEnabled = True
         Me.CBNoms.Location = New System.Drawing.Point(20, 145)
-        Me.CBNoms.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.CBNoms.Margin = New System.Windows.Forms.Padding(2)
         Me.CBNoms.Name = "CBNoms"
         Me.CBNoms.Size = New System.Drawing.Size(104, 21)
         Me.CBNoms.TabIndex = 18
@@ -232,7 +232,7 @@ Partial Class Form1
         'BStats
         '
         Me.BStats.Location = New System.Drawing.Point(514, 150)
-        Me.BStats.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.BStats.Margin = New System.Windows.Forms.Padding(2)
         Me.BStats.Name = "BStats"
         Me.BStats.Size = New System.Drawing.Size(98, 36)
         Me.BStats.TabIndex = 17
@@ -255,7 +255,7 @@ Partial Class Form1
         'BTriScore
         '
         Me.BTriScore.Location = New System.Drawing.Point(513, 118)
-        Me.BTriScore.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.BTriScore.Margin = New System.Windows.Forms.Padding(2)
         Me.BTriScore.Name = "BTriScore"
         Me.BTriScore.Size = New System.Drawing.Size(99, 20)
         Me.BTriScore.TabIndex = 15
@@ -279,7 +279,7 @@ Partial Class Form1
         '
         Me.BCreateurs.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BCreateurs.Location = New System.Drawing.Point(594, 10)
-        Me.BCreateurs.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.BCreateurs.Margin = New System.Windows.Forms.Padding(2)
         Me.BCreateurs.Name = "BCreateurs"
         Me.BCreateurs.Size = New System.Drawing.Size(56, 19)
         Me.BCreateurs.TabIndex = 17
@@ -333,8 +333,9 @@ Partial Class Form1
         Me.Controls.Add(Me.LTitre)
         Me.Controls.Add(Me.LRegle)
         Me.Controls.Add(Me.Panel1)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "Form1"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "à"
         Me.PMenu.ResumeLayout(False)
         Me.PLeaderBoard.ResumeLayout(False)
