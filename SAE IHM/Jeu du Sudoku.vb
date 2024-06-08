@@ -6,9 +6,14 @@ Public Class Form2
     Dim nbIndicesPossibles As Integer = 3
     Dim grille As Integer(,)
     Private modeIndice As Boolean = False
+    Private casesAafficher As Integer
 
     Public Sub SetGameSettings(time As Integer)
         tempsMax = time
+    End Sub
+
+    Public Sub SetCasesAafficher(cases As Integer)
+        casesAafficher = cases
     End Sub
 
     Public Class FormAvecTransparence
@@ -340,7 +345,8 @@ Public Class Form2
     End Sub
 
     Private Sub AfficherSudoku(grille As Integer(,), nbMax As Integer)
-        Dim grilleMasque As Integer(,) = SudokuMasker.MaskSudoku(grille, nbMax)
+        ' Use the passed number of cases to display
+        Dim grilleMasque As Integer(,) = SudokuMasker.MaskSudoku(grille, casesAafficher)
         For ligne As Integer = 0 To 8
             For colonne As Integer = 0 To 8
                 Dim textBox As TextBox = GetTextBox(ligne, colonne)

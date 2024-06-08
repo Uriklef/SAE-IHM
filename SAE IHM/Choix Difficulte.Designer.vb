@@ -23,10 +23,10 @@ Partial Class Choix_Difficulte
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.RadioButton20Minutes = New System.Windows.Forms.RadioButton()
-        Me.RadioButton15Minutes = New System.Windows.Forms.RadioButton()
-        Me.RadioButton7Minutes = New System.Windows.Forms.RadioButton()
-        Me.RadioButton4Minutes = New System.Windows.Forms.RadioButton()
+        Me.RadioButtonFacile = New System.Windows.Forms.RadioButton()
+        Me.RadioButtonMoyen = New System.Windows.Forms.RadioButton()
+        Me.RadioButtonDifficile = New System.Windows.Forms.RadioButton()
+        Me.RadioButtonExpert = New System.Windows.Forms.RadioButton()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnLancer = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
@@ -46,73 +46,81 @@ Partial Class Choix_Difficulte
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Choix Difficulté :"
         '
-        'RadioButton20Minutes
+        'RadioButtonFacile
         '
-        Me.RadioButton20Minutes.AutoSize = True
-        Me.RadioButton20Minutes.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadioButton20Minutes.Location = New System.Drawing.Point(52, 29)
-        Me.RadioButton20Minutes.Name = "RadioButton20Minutes"
-        Me.RadioButton20Minutes.Size = New System.Drawing.Size(98, 20)
-        Me.RadioButton20Minutes.TabIndex = 5
-        Me.RadioButton20Minutes.TabStop = True
-        Me.RadioButton20Minutes.Text = "25 minutes"
-        Me.RadioButton20Minutes.UseVisualStyleBackColor = True
+        Me.RadioButtonFacile.AutoSize = True
+        Me.RadioButtonFacile.BackColor = System.Drawing.Color.Transparent
+        Me.RadioButtonFacile.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RadioButtonFacile.ForeColor = System.Drawing.Color.Lime
+        Me.RadioButtonFacile.Location = New System.Drawing.Point(25, 35)
+        Me.RadioButtonFacile.Name = "RadioButtonFacile"
+        Me.RadioButtonFacile.Size = New System.Drawing.Size(155, 20)
+        Me.RadioButtonFacile.TabIndex = 5
+        Me.RadioButtonFacile.TabStop = True
+        Me.RadioButtonFacile.Text = "Facile (25 minutes)"
+        Me.RadioButtonFacile.UseVisualStyleBackColor = False
         '
-        'RadioButton15Minutes
+        'RadioButtonMoyen
         '
-        Me.RadioButton15Minutes.AutoSize = True
-        Me.RadioButton15Minutes.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadioButton15Minutes.Location = New System.Drawing.Point(52, 66)
-        Me.RadioButton15Minutes.Name = "RadioButton15Minutes"
-        Me.RadioButton15Minutes.Size = New System.Drawing.Size(98, 20)
-        Me.RadioButton15Minutes.TabIndex = 6
-        Me.RadioButton15Minutes.TabStop = True
-        Me.RadioButton15Minutes.Text = "15 minutes"
-        Me.RadioButton15Minutes.UseVisualStyleBackColor = True
+        Me.RadioButtonMoyen.AutoSize = True
+        Me.RadioButtonMoyen.BackColor = System.Drawing.Color.Transparent
+        Me.RadioButtonMoyen.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RadioButtonMoyen.ForeColor = System.Drawing.Color.Yellow
+        Me.RadioButtonMoyen.Location = New System.Drawing.Point(25, 76)
+        Me.RadioButtonMoyen.Name = "RadioButtonMoyen"
+        Me.RadioButtonMoyen.Size = New System.Drawing.Size(162, 20)
+        Me.RadioButtonMoyen.TabIndex = 6
+        Me.RadioButtonMoyen.TabStop = True
+        Me.RadioButtonMoyen.Text = "Normal (15 minutes)"
+        Me.RadioButtonMoyen.UseVisualStyleBackColor = False
         '
-        'RadioButton7Minutes
+        'RadioButtonDifficile
         '
-        Me.RadioButton7Minutes.AutoSize = True
-        Me.RadioButton7Minutes.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadioButton7Minutes.Location = New System.Drawing.Point(52, 105)
-        Me.RadioButton7Minutes.Name = "RadioButton7Minutes"
-        Me.RadioButton7Minutes.Size = New System.Drawing.Size(90, 20)
-        Me.RadioButton7Minutes.TabIndex = 7
-        Me.RadioButton7Minutes.TabStop = True
-        Me.RadioButton7Minutes.Text = "7 minutes"
-        Me.RadioButton7Minutes.UseVisualStyleBackColor = True
+        Me.RadioButtonDifficile.AutoSize = True
+        Me.RadioButtonDifficile.BackColor = System.Drawing.Color.Transparent
+        Me.RadioButtonDifficile.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RadioButtonDifficile.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.RadioButtonDifficile.Location = New System.Drawing.Point(24, 121)
+        Me.RadioButtonDifficile.Name = "RadioButtonDifficile"
+        Me.RadioButtonDifficile.Size = New System.Drawing.Size(156, 20)
+        Me.RadioButtonDifficile.TabIndex = 7
+        Me.RadioButtonDifficile.TabStop = True
+        Me.RadioButtonDifficile.Text = "Difficile (7 minutes)"
+        Me.RadioButtonDifficile.UseVisualStyleBackColor = False
         '
-        'RadioButton4Minutes
+        'RadioButtonExpert
         '
-        Me.RadioButton4Minutes.AutoSize = True
-        Me.RadioButton4Minutes.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadioButton4Minutes.Location = New System.Drawing.Point(52, 147)
-        Me.RadioButton4Minutes.Name = "RadioButton4Minutes"
-        Me.RadioButton4Minutes.Size = New System.Drawing.Size(90, 20)
-        Me.RadioButton4Minutes.TabIndex = 8
-        Me.RadioButton4Minutes.TabStop = True
-        Me.RadioButton4Minutes.Text = "4 minutes"
-        Me.RadioButton4Minutes.UseVisualStyleBackColor = True
+        Me.RadioButtonExpert.AutoSize = True
+        Me.RadioButtonExpert.BackColor = System.Drawing.Color.Transparent
+        Me.RadioButtonExpert.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RadioButtonExpert.ForeColor = System.Drawing.Color.Red
+        Me.RadioButtonExpert.Location = New System.Drawing.Point(25, 165)
+        Me.RadioButtonExpert.Name = "RadioButtonExpert"
+        Me.RadioButtonExpert.Size = New System.Drawing.Size(148, 20)
+        Me.RadioButtonExpert.TabIndex = 8
+        Me.RadioButtonExpert.TabStop = True
+        Me.RadioButtonExpert.Text = "Expert (4 minutes)"
+        Me.RadioButtonExpert.UseVisualStyleBackColor = False
         '
         'Panel1
         '
         Me.Panel1.AccessibleName = "test"
-        Me.Panel1.BackColor = System.Drawing.Color.Snow
+        Me.Panel1.BackColor = System.Drawing.Color.Black
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel1.Controls.Add(Me.RadioButton4Minutes)
-        Me.Panel1.Controls.Add(Me.RadioButton20Minutes)
-        Me.Panel1.Controls.Add(Me.RadioButton7Minutes)
-        Me.Panel1.Controls.Add(Me.RadioButton15Minutes)
+        Me.Panel1.Controls.Add(Me.RadioButtonExpert)
+        Me.Panel1.Controls.Add(Me.RadioButtonFacile)
+        Me.Panel1.Controls.Add(Me.RadioButtonDifficile)
+        Me.Panel1.Controls.Add(Me.RadioButtonMoyen)
         Me.Panel1.Location = New System.Drawing.Point(104, 96)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(207, 199)
+        Me.Panel1.Size = New System.Drawing.Size(207, 220)
         Me.Panel1.TabIndex = 10
         '
         'btnLancer
         '
         Me.btnLancer.BackColor = System.Drawing.Color.Snow
         Me.btnLancer.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnLancer.Location = New System.Drawing.Point(127, 312)
+        Me.btnLancer.Location = New System.Drawing.Point(127, 349)
         Me.btnLancer.Name = "btnLancer"
         Me.btnLancer.Size = New System.Drawing.Size(158, 67)
         Me.btnLancer.TabIndex = 11
@@ -133,8 +141,8 @@ Partial Class Choix_Difficulte
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.SAE_IHM.My.Resources.fond
-        Me.ClientSize = New System.Drawing.Size(424, 391)
+        Me.BackgroundImage = Global.SAE_IHM.My.Resources.Resources.fond
+        Me.ClientSize = New System.Drawing.Size(424, 440)
         Me.Controls.Add(Me.btnLancer)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel2)
@@ -149,10 +157,10 @@ Partial Class Choix_Difficulte
     End Sub
 
     Friend WithEvents Label1 As Label
-    Friend WithEvents RadioButton20Minutes As RadioButton
-    Friend WithEvents RadioButton15Minutes As RadioButton
-    Friend WithEvents RadioButton7Minutes As RadioButton
-    Friend WithEvents RadioButton4Minutes As RadioButton
+    Friend WithEvents RadioButtonFacile As RadioButton
+    Friend WithEvents RadioButtonMoyen As RadioButton
+    Friend WithEvents RadioButtonDifficile As RadioButton
+    Friend WithEvents RadioButtonExpert As RadioButton
     Friend WithEvents Panel1 As Panel
     Friend WithEvents btnLancer As Button
     Friend WithEvents Panel2 As Panel

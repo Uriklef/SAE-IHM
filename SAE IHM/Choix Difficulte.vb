@@ -1,31 +1,51 @@
 ﻿Public Class Choix_Difficulte
     Private TempsSelectionne As Integer
+    Private CasesAafficher As Integer
+
     Private Sub Choix_Difficulte_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Définition de l'opacité souhaitée (entre 0 et 1)
+        Dim nouvelleOpacite As Double = 0.7 ' Opacité à 70%
+
+        ' Appliquer l'opacité au panel
+        Panel1.BackColor = Color.FromArgb(CInt(nouvelleOpacite * 255), Panel1.BackColor.R, Panel1.BackColor.G, Panel1.BackColor.B)
     End Sub
 
     Private Sub btnLancer_Click(sender As Object, e As EventArgs) Handles btnLancer.Click
         Me.Hide()
         Form2.Show()
         Form2.SetGameSettings(TempsSelectionne)
+        Form2.SetCasesAafficher(CasesAafficher)
     End Sub
 
-    Private Sub TimeRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton20Minutes.CheckedChanged, RadioButton15Minutes.CheckedChanged, RadioButton7Minutes.CheckedChanged, RadioButton4Minutes.CheckedChanged
+    Private Sub TimeRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButtonFacile.CheckedChanged, RadioButtonMoyen.CheckedChanged, RadioButtonDifficile.CheckedChanged, RadioButtonExpert.CheckedChanged
         UpdateSelectionState()
     End Sub
 
     Private Sub UpdateSelectionState()
-        Dim timeSelected As Boolean = RadioButton20Minutes.Checked Or RadioButton15Minutes.Checked Or RadioButton7Minutes.Checked Or RadioButton4Minutes.Checked
+        Dim timeSelected As Boolean = RadioButtonFacile.Checked Or RadioButtonMoyen.Checked Or RadioButtonDifficile.Checked Or RadioButtonExpert.Checked
 
         btnLancer.Enabled = timeSelected
 
-        If RadioButton20Minutes.Checked Then
+        If RadioButtonFacile.Checked Then
             TempsSelectionne = 25 * 60
-        ElseIf RadioButton15Minutes.Checked Then
+            CasesAafficher = 90
+        ElseIf RadioButtonMoyen.Checked Then
             TempsSelectionne = 15 * 60
-        ElseIf RadioButton7Minutes.Checked Then
+            CasesAafficher = 84
+        ElseIf RadioButtonDifficile.Checked Then
             TempsSelectionne = 7 * 60
-        ElseIf RadioButton4Minutes.Checked Then
+            CasesAafficher = 79
+        ElseIf RadioButtonExpert.Checked Then
             TempsSelectionne = 4 * 60
+            CasesAafficher = 70
         End If
+    End Sub
+
+    Private Sub RadioButton20Minutes_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButtonFacile.CheckedChanged
+
+    End Sub
+
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+
     End Sub
 End Class
