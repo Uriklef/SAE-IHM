@@ -318,15 +318,14 @@ Public Class Form2
 
         MsgBox("Félicitations " & currentJoueur & ", tu remportes la partie !")
         Timer.Stop()
-        Me.Close()
-        Form1.Show()
 
         Dim nvScore As New Score With {
         .Nom = currentJoueur.ToUpper(),
         .MeilleurTemps = (7 * 60 - tempsMax),
         .CumulTemps = .MeilleurTemps,
-        .NbParties = 1
-    }
+        .NbParties = 1,
+        .Difficulte = Choix_Difficulte.getChoix()
+        }
 
         For i As Integer = 0 To nbEnregistrement - 1
             Dim s As Score = scores.GetValue(i)
@@ -341,6 +340,8 @@ Public Class Form2
 
         scores.SetValue(nvScore, nbEnregistrement)
         nbEnregistrement += 1
+        Me.Close()
+        Form1.Show()
 
     End Sub
 

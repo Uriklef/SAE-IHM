@@ -41,11 +41,14 @@
         End If
     End Sub
 
-    Private Sub RadioButton20Minutes_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButtonFacile.CheckedChanged
-
-    End Sub
-
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
-
-    End Sub
+    Public Function getChoix()
+        For Each control As Control In Panel1.Controls
+            If TypeOf control Is RadioButton Then
+                Dim bouton As RadioButton = control
+                If bouton.Checked = True Then
+                    Return bouton.Text
+                End If
+            End If
+        Next
+    End Function
 End Class

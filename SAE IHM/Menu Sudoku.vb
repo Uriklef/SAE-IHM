@@ -56,9 +56,11 @@ Public Class Form1
 
     Private Sub RemplieScore()
         LScores.Text = ""
-        LScores.Text = "Joueurs     |      Temps" & vbCr & "-------------------------------------" & vbCr
+        LScores.Text = "  Joueurs  |   Temps  |   Difficulé" & vbCr & "-------------------------------------" & vbCr
+        LScores.ForeColor = Color.FloralWhite
         LBNoms.Items.Clear()
         LBMeilleursScores.Items.Clear()
+        LBDifficulte.Items.Clear()
         If nbEnregistrement = 0 Then
             LScores.Text = LScores.Text & "Aucun joueur enregistré"
         Else
@@ -72,6 +74,7 @@ Public Class Form1
                 Dim secondes As Integer = score.MeilleurTemps Mod 60
                 Dim temps As String = minutes.ToString & ":" & secondes.ToString
                 LBMeilleursScores.Items.Add(temps)
+                LBDifficulte.Items.Add(score.Difficulte)
             Next
         End If
     End Sub
@@ -164,6 +167,7 @@ Public Class Form1
     Private Sub LBNoms_SelectedChanged(sender As Object, e As EventArgs) Handles LBNoms.Click, LBMeilleursScores.Click, CBNoms.Click
         LBMeilleursScores.SelectedIndex = sender.SelectedIndex
         LBNoms.SelectedIndex = sender.SelectedIndex
+        LBDifficulte.SelectedIndex = sender.SelectedIndex
         CBNoms.SelectedItem = LBNoms.SelectedItem
     End Sub
 
