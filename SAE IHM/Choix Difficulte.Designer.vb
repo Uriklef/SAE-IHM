@@ -133,7 +133,7 @@ Partial Class Choix_Difficulte
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.SAE_IHM.My.Resources.Resources._1000_F_808390035_jPKb4fKJgcbTKKcLW292kakHfsgEqKGq1
+        Me.BackgroundImage = Global.SAE_IHM.My.Resources.fond
         Me.ClientSize = New System.Drawing.Size(424, 391)
         Me.Controls.Add(Me.btnLancer)
         Me.Controls.Add(Me.Panel1)

@@ -153,9 +153,6 @@
     <None Include="Resources\opNami.wav" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\1000_F_808390035_jPKb4fKJgcbTKKcLW292kakHfsgEqKGq1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\fond.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
