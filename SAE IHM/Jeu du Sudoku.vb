@@ -331,8 +331,6 @@ Public Class Form2
 
         MsgBox("Félicitations " & currentJoueur & ", tu remportes la partie !")
         Timer.Stop()
-        Me.Close()
-        Form1.Show()
 
         Dim nvScore As New Score With {
         .Nom = currentJoueur.ToUpper(),
