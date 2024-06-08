@@ -34,6 +34,20 @@ Public Class Form2
         Else
             Timer.Stop()
             MessageBox.Show("Le temps est écoulé!")
+            For i As Integer = 0 To 8
+                For j As Integer = 0 To 8
+                    Dim tb As TextBox = GetTextBox(i, j)
+                    If tb IsNot Nothing Then
+                        tb.BackColor = Color.White
+                    End If
+                Next
+            Next
+            TableLayoutPanelQuadrillage.Enabled = False
+            BtnTerminer.Enabled = False
+            BtnIndice.Hide()
+            lblNbFoisIndice.Hide()
+            BtnPause.Hide()
+            ColorierRegions()
         End If
     End Sub
 
@@ -231,8 +245,9 @@ Public Class Form2
         Next
         TableLayoutPanelQuadrillage.Enabled = False
         BtnTerminer.Enabled = False
-        BtnIndice.Enabled = False
-        lblNbFoisIndice.Enabled = False
+        BtnIndice.Hide()
+        lblNbFoisIndice.Hide()
+        BtnPause.Hide()
         Timer.Stop()
         ColorierRegions()
     End Sub
