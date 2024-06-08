@@ -30,10 +30,10 @@ Partial Class Form1
         Me.LBNoms = New System.Windows.Forms.ListBox()
         Me.LBMeilleursScores = New System.Windows.Forms.ListBox()
         Me.PMenu = New System.Windows.Forms.Panel()
+        Me.BJouer = New System.Windows.Forms.Button()
         Me.BLeave = New System.Windows.Forms.Button()
         Me.BRegle = New System.Windows.Forms.Button()
         Me.BLeaderBoard = New System.Windows.Forms.Button()
-        Me.BJouer = New System.Windows.Forms.Button()
         Me.BTrierNoms = New System.Windows.Forms.Button()
         Me.PLeaderBoard = New System.Windows.Forms.Panel()
         Me.CBNoms = New System.Windows.Forms.ComboBox()
@@ -43,6 +43,7 @@ Partial Class Form1
         Me.BCreateurs = New System.Windows.Forms.Button()
         Me.LCreateurs = New System.Windows.Forms.Label()
         Me.BtnCouperSon = New System.Windows.Forms.Button()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PMenu.SuspendLayout()
         Me.PLeaderBoard.SuspendLayout()
         Me.SuspendLayout()
@@ -52,12 +53,12 @@ Partial Class Form1
         Me.LRegle.BackColor = System.Drawing.Color.Transparent
         Me.LRegle.Cursor = System.Windows.Forms.Cursors.No
         Me.LRegle.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.LRegle.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LRegle.Font = New System.Drawing.Font("Impact", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LRegle.ForeColor = System.Drawing.Color.Snow
-        Me.LRegle.Location = New System.Drawing.Point(20, 155)
+        Me.LRegle.Location = New System.Drawing.Point(12, 134)
         Me.LRegle.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LRegle.Name = "LRegle"
-        Me.LRegle.Size = New System.Drawing.Size(600, 162)
+        Me.LRegle.Size = New System.Drawing.Size(616, 267)
         Me.LRegle.TabIndex = 3
         Me.LRegle.Text = resources.GetString("LRegle.Text")
         Me.LRegle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -137,6 +138,19 @@ Partial Class Form1
         Me.PMenu.Size = New System.Drawing.Size(214, 291)
         Me.PMenu.TabIndex = 13
         '
+        'BJouer
+        '
+        Me.BJouer.BackColor = System.Drawing.Color.Snow
+        Me.BJouer.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.BJouer.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BJouer.Location = New System.Drawing.Point(40, 20)
+        Me.BJouer.Margin = New System.Windows.Forms.Padding(2)
+        Me.BJouer.Name = "BJouer"
+        Me.BJouer.Size = New System.Drawing.Size(137, 50)
+        Me.BJouer.TabIndex = 4
+        Me.BJouer.Text = "Lancer une partie"
+        Me.BJouer.UseVisualStyleBackColor = False
+        '
         'BLeave
         '
         Me.BLeave.BackColor = System.Drawing.Color.Snow
@@ -177,19 +191,6 @@ Partial Class Form1
         Me.BLeaderBoard.TabIndex = 5
         Me.BLeaderBoard.Text = "Tableau des scores"
         Me.BLeaderBoard.UseVisualStyleBackColor = False
-        '
-        'BJouer
-        '
-        Me.BJouer.BackColor = System.Drawing.Color.Snow
-        Me.BJouer.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.BJouer.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BJouer.Location = New System.Drawing.Point(40, 20)
-        Me.BJouer.Margin = New System.Windows.Forms.Padding(2)
-        Me.BJouer.Name = "BJouer"
-        Me.BJouer.Size = New System.Drawing.Size(137, 50)
-        Me.BJouer.TabIndex = 4
-        Me.BJouer.Text = "Lancer une partie"
-        Me.BJouer.UseVisualStyleBackColor = False
         '
         'BTrierNoms
         '
@@ -293,12 +294,20 @@ Partial Class Form1
         Me.BtnCouperSon.Text = "Couper/Remettre Le Son"
         Me.BtnCouperSon.UseVisualStyleBackColor = False
         '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Panel1.Location = New System.Drawing.Point(17, 134)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(610, 250)
+        Me.Panel1.TabIndex = 110
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.BackgroundImage = Global.SAE_IHM.My.Resources.Resources._1000_F_808390035_jPKb4fKJgcbTKKcLW292kakHfsgEqKGq1
+        Me.BackgroundImage = Global.SAE_IHM.My.Resources.fond
         Me.ClientSize = New System.Drawing.Size(643, 454)
         Me.Controls.Add(Me.BtnCouperSon)
         Me.Controls.Add(Me.LCreateurs)
@@ -306,8 +315,9 @@ Partial Class Form1
         Me.Controls.Add(Me.PLeaderBoard)
         Me.Controls.Add(Me.PMenu)
         Me.Controls.Add(Me.BRetour)
-        Me.Controls.Add(Me.LRegle)
         Me.Controls.Add(Me.LTitre)
+        Me.Controls.Add(Me.LRegle)
+        Me.Controls.Add(Me.Panel1)
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "Form1"
         Me.Text = "à"
@@ -339,4 +349,5 @@ Partial Class Form1
     Friend WithEvents BCreateurs As Button
     Friend WithEvents LCreateurs As Label
     Friend WithEvents BtnCouperSon As Button
+    Friend WithEvents Panel1 As Panel
 End Class

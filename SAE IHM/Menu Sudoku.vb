@@ -9,11 +9,18 @@ Public Class Form1
         BRetour.Hide()
         PLeaderBoard.Hide()
         LCreateurs.Hide()
+        Panel1.Hide()
 
         MettreMusique()
 
         AddHandler BCreateurs.Paint, AddressOf Me.BCreateursPaint
         BCreateurs.Size = New Size(30, 30)
+
+        ' Définition de l'opacité souhaitée (entre 0 et 1)
+        Dim nouvelleOpacite As Double = 0.6 ' Opacité à 60%
+
+        ' Appliquer l'opacité au panel
+        LRegle.BackColor = Color.FromArgb(CInt(nouvelleOpacite * 255), Panel1.BackColor.R, Panel1.BackColor.G, Panel1.BackColor.B)
     End Sub
 
     Private Sub MettreMusique()
@@ -82,6 +89,7 @@ Public Class Form1
         BCreateurs.Hide()
         LRegle.Show()
         BRetour.Show()
+        Panel1.Show()
         LTitre.Text = "REGLES"
     End Sub
 
@@ -89,6 +97,7 @@ Public Class Form1
         LRegle.Hide()
         BRetour.Hide()
         PLeaderBoard.Hide()
+        Panel1.Hide()
         PMenu.Show()
         BCreateurs.Show()
         LTitre.Text = "SUDOKU"
@@ -189,5 +198,13 @@ Public Class Form1
             MettreMusique()
             musiqueActive = True
         End If
+    End Sub
+
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
+
+    End Sub
+
+    Private Sub LRegle_Click(sender As Object, e As EventArgs) Handles LRegle.Click
+
     End Sub
 End Class

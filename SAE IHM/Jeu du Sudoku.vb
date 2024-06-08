@@ -13,7 +13,6 @@ Public Class Form2
 
     Public Class FormAvecTransparence
         Inherits Form
-
         Protected Overrides ReadOnly Property CreateParams As CreateParams
             Get
                 Dim cp As CreateParams = MyBase.CreateParams
