@@ -256,6 +256,10 @@ Public Class Form2
             textBox.BackColor = Color.LightGreen
             textBox.ReadOnly = True
 
+            ' Supprimer le gestionnaire d'événements KeyPress seulement pour cette TextBox
+            RemoveHandler textBox.KeyPress, AddressOf TextBox_KeyPress
+
+            ' Vérifier si la grille est complète
             If grilleComplete() Then
                 BtnTerminer.Show()
             Else
@@ -265,6 +269,15 @@ Public Class Form2
             ' Désactiver le mode indice après avoir affiché un indice
             modeIndice = False
 
+            ' Réactiver l'édition des autres TextBoxes
+            For i As Integer = 0 To 8
+                For j As Integer = 0 To 8
+                    Dim tb As TextBox = GetTextBox(i, j)
+                    If tb IsNot Nothing AndAlso tb.ForeColor <> Color.Yellow Then
+                        tb.ReadOnly = False
+                    End If
+                Next
+            Next
         Else
             ' Restaurer les couleurs des régions avant de les colorier en bleu
             RestaurerCouleurs()
@@ -280,19 +293,19 @@ Public Class Form2
             ' Colorier la colonne
             For i As Integer = 0 To 8
                 Dim tb As TextBox = GetTextBox(i, colonne)
-                If TypeOf tb Is TextBox AndAlso tb IsNot Nothing AndAlso tb.BackColor <> Color.Red AndAlso tb.BackColor <> Color.LightGreen Then
+                If tb IsNot Nothing AndAlso tb.BackColor <> Color.Red AndAlso tb.BackColor <> Color.LightGreen Then
                     tb.BackColor = Color.LightBlue
                 End If
             Next
 
-            ' Colorer la region
+            ' Colorer la région
             Dim debutLigne As Integer = (ligne \ 3) * 3
             Dim debutColonne As Integer = (colonne \ 3) * 3
 
             For i As Integer = debutLigne To debutLigne + 2
                 For j As Integer = debutColonne To debutColonne + 2
                     Dim tb As TextBox = GetTextBox(i, j)
-                    If TypeOf tb Is TextBox AndAlso tb IsNot Nothing AndAlso tb.BackColor <> Color.Red AndAlso tb.BackColor <> Color.LightGreen Then
+                    If tb IsNot Nothing AndAlso tb.BackColor <> Color.Red AndAlso tb.BackColor <> Color.LightGreen Then
                         tb.BackColor = Color.LightBlue
                     End If
                 Next
@@ -318,6 +331,8 @@ Public Class Form2
 
         MsgBox("Félicitations " & currentJoueur & ", tu remportes la partie !")
         Timer.Stop()
+        Me.Close()
+        Form1.Show()
 
         Dim nvScore As New Score With {
         .Nom = currentJoueur.ToUpper(),
