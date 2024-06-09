@@ -221,8 +221,8 @@ Partial Class Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.SAE_IHM.My.Resources.Resources.fond
-        Me.ClientSize = New System.Drawing.Size(710, 480)
+        Me.BackgroundImage = Global.SAE_IHM.My.Resources.fond
+        Me.ClientSize = New System.Drawing.Size(710, 474)
         Me.Controls.Add(Me.lblNbFoisIndice)
         Me.Controls.Add(Me.BtnPause)
         Me.Controls.Add(Me.BtnCommencer)
@@ -237,7 +237,6 @@ Partial Class Form2
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel2)
         Me.Name = "Form2"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Form1"
         Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)

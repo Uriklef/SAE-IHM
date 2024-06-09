@@ -1,5 +1,6 @@
 Public Class Form2
     Dim tempsMax As Integer
+    Dim tempsActuel As Integer
     Dim partieActive As Boolean
     Dim currentJoueur As String
     Dim nbErreursPossibles As Integer = 3
@@ -10,6 +11,7 @@ Public Class Form2
 
     Public Sub SetGameSettings(time As Integer)
         tempsMax = time
+        tempsActuel = time
     End Sub
 
     Public Sub SetCasesAafficher(cases As Integer)
@@ -28,26 +30,12 @@ Public Class Form2
     End Class
 
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
-        If tempsMax > 0 Then
-            tempsMax -= 1
+        If tempsActuel > 0 Then
+            tempsActuel -= 1
             ActualisationLabel()
         Else
             Timer.Stop()
             MessageBox.Show("Le temps est écoulé!")
-            For i As Integer = 0 To 8
-                For j As Integer = 0 To 8
-                    Dim tb As TextBox = GetTextBox(i, j)
-                    If tb IsNot Nothing Then
-                        tb.BackColor = Color.White
-                    End If
-                Next
-            Next
-            TableLayoutPanelQuadrillage.Enabled = False
-            BtnTerminer.Enabled = False
-            BtnIndice.Hide()
-            lblNbFoisIndice.Hide()
-            BtnPause.Hide()
-            ColorierRegions()
         End If
     End Sub
 
@@ -78,8 +66,8 @@ Public Class Form2
     End Sub
 
     Private Sub ActualisationLabel()
-        Dim minutes As Integer = tempsMax \ 60
-        Dim secondes As Integer = tempsMax Mod 60
+        Dim minutes As Integer = tempsActuel \ 60
+        Dim secondes As Integer = tempsActuel Mod 60
         labelMinuteur.Text = String.Format("{0:00}:{1:00}", minutes, secondes)
 
         lblNbErreursRestantes.Text = String.Format("{0}", nbErreursPossibles)
@@ -117,7 +105,10 @@ Public Class Form2
         grille = GenerateSudoku()
         ColorierRegions()
 
-        Dim nouvelleOpacite As Double = 0.6 ' Opacité à 70%
+        ' Définition de l'opacité souhaitée (entre 0 et 1)
+        Dim nouvelleOpacite As Double = 0.6 ' Opacité à 60%
+
+        ' Appliquer l'opacité au panel
         Panel1.BackColor = Color.FromArgb(CInt(nouvelleOpacite * 255), Panel1.BackColor.R, Panel1.BackColor.G, Panel1.BackColor.B)
     End Sub
 
@@ -242,9 +233,8 @@ Public Class Form2
         Next
         TableLayoutPanelQuadrillage.Enabled = False
         BtnTerminer.Enabled = False
-        BtnIndice.Hide()
-        lblNbFoisIndice.Hide()
-        BtnPause.Hide()
+        BtnIndice.Enabled = False
+        lblNbFoisIndice.Enabled = False
         Timer.Stop()
         ColorierRegions()
     End Sub
@@ -268,10 +258,6 @@ Public Class Form2
             textBox.BackColor = Color.LightGreen
             textBox.ReadOnly = True
 
-            ' Supprimer le gestionnaire d'événements KeyPress seulement pour cette TextBox
-            RemoveHandler textBox.KeyPress, AddressOf TextBox_KeyPress
-
-            ' Vérifier si la grille est complète
             If grilleComplete() Then
                 BtnTerminer.Show()
             Else
@@ -281,15 +267,6 @@ Public Class Form2
             ' Désactiver le mode indice après avoir affiché un indice
             modeIndice = False
 
-            ' Réactiver l'édition des autres TextBoxes
-            For i As Integer = 0 To 8
-                For j As Integer = 0 To 8
-                    Dim tb As TextBox = GetTextBox(i, j)
-                    If tb IsNot Nothing AndAlso (String.IsNullOrEmpty(tb.Text) OrElse tb.BackColor = Color.Red) Then
-                        tb.ReadOnly = False
-                    End If
-                Next
-            Next
         Else
             ' Restaurer les couleurs des régions avant de les colorier en bleu
             RestaurerCouleurs()
@@ -305,19 +282,19 @@ Public Class Form2
             ' Colorier la colonne
             For i As Integer = 0 To 8
                 Dim tb As TextBox = GetTextBox(i, colonne)
-                If tb IsNot Nothing AndAlso tb.BackColor <> Color.Red AndAlso tb.BackColor <> Color.LightGreen Then
+                If TypeOf tb Is TextBox AndAlso tb IsNot Nothing AndAlso tb.BackColor <> Color.Red AndAlso tb.BackColor <> Color.LightGreen Then
                     tb.BackColor = Color.LightBlue
                 End If
             Next
 
-            ' Colorer la région
+            ' Colorer la region
             Dim debutLigne As Integer = (ligne \ 3) * 3
             Dim debutColonne As Integer = (colonne \ 3) * 3
 
             For i As Integer = debutLigne To debutLigne + 2
                 For j As Integer = debutColonne To debutColonne + 2
                     Dim tb As TextBox = GetTextBox(i, j)
-                    If tb IsNot Nothing AndAlso tb.BackColor <> Color.Red AndAlso tb.BackColor <> Color.LightGreen Then
+                    If TypeOf tb Is TextBox AndAlso tb IsNot Nothing AndAlso tb.BackColor <> Color.Red AndAlso tb.BackColor <> Color.LightGreen Then
                         tb.BackColor = Color.LightBlue
                     End If
                 Next
@@ -343,10 +320,13 @@ Public Class Form2
 
         MsgBox("Félicitations " & currentJoueur & ", tu remportes la partie !")
         Timer.Stop()
+        Me.Close()
+        Form1.Show()
+
 
         Dim nvScore As New Score With {
         .Nom = currentJoueur.ToUpper(),
-        .MeilleurTemps = (7 * 60 - tempsMax),
+        .MeilleurTemps = (tempsMax - tempsActuel),
         .CumulTemps = .MeilleurTemps,
         .NbParties = 1,
         .Difficulte = Choix_Difficulte.getChoix()
@@ -365,8 +345,6 @@ Public Class Form2
 
         scores.SetValue(nvScore, nbEnregistrement)
         nbEnregistrement += 1
-        Me.Close()
-        Form1.Show()
 
     End Sub
 
@@ -404,9 +382,9 @@ Public Class Form2
                         Dim tb As TextBox = GetTextBox(i, j)
                         If tb IsNot Nothing AndAlso tb.BackColor <> Color.Red AndAlso tb.BackColor <> Color.LightGreen Then
                             If (regionLigne + regionColonne) Mod 2 = 0 Then
-                                tb.BackColor = Color.RosyBrown
+                                tb.BackColor = Color.LightGray
                             Else
-                                tb.BackColor = Color.Snow
+                                tb.BackColor = Color.White
                             End If
                         End If
                     Next
@@ -450,9 +428,5 @@ Public Class Form2
         If nbErreursPossibles = 0 Then
             lblNbFoisIndice.Enabled = False
         End If
-    End Sub
-
-    Private Sub LblNombreErreurs_Click(sender As Object, e As EventArgs) Handles LblNombreErreurs.Click
-
     End Sub
 End Class
