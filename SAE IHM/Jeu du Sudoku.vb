@@ -285,7 +285,7 @@ Public Class Form2
             For i As Integer = 0 To 8
                 For j As Integer = 0 To 8
                     Dim tb As TextBox = GetTextBox(i, j)
-                    If tb IsNot Nothing AndAlso tb.ForeColor <> Color.Yellow Then
+                    If tb IsNot Nothing AndAlso (String.IsNullOrEmpty(tb.Text) OrElse tb.BackColor = Color.Red) Then
                         tb.ReadOnly = False
                     End If
                 Next
