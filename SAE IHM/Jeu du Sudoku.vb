@@ -2,6 +2,7 @@ Public Class Form2
     Dim tempsMax As Integer
     Dim tempsActuel As Integer
     Dim partieActive As Boolean
+    Dim musiqueActive = True
     Dim currentJoueur As String
     Dim nbErreursPossibles As Integer = 3
     Dim nbIndicesPossibles As Integer = 3
@@ -36,6 +37,20 @@ Public Class Form2
         Else
             Timer.Stop()
             MessageBox.Show("Le temps est écoulé!")
+            For i As Integer = 0 To 8
+                For j As Integer = 0 To 8
+                    Dim tb As TextBox = GetTextBox(i, j)
+                    If tb IsNot Nothing Then
+                        tb.BackColor = Color.White
+                    End If
+                Next
+            Next
+            TableLayoutPanelQuadrillage.Enabled = False
+            BtnTerminer.Enabled = False
+            BtnIndice.Hide()
+            lblNbFoisIndice.Hide()
+            BtnPause.Hide()
+            ColorierRegions()
         End If
     End Sub
 
@@ -55,6 +70,7 @@ Public Class Form2
             BtnIndice.Enabled = True
             BtnQuitter.Enabled = False
             BtnAbandonner.Show()
+            BtnCouperSon.Show()
             BtnQuitter.Hide()
             BtnPause.Show()
             BtnAbandonner.Enabled = True
@@ -78,6 +94,7 @@ Public Class Form2
     Private Sub Jeu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Timer.Interval = 1000
         ActualisationLabel()
+        BtnCouperSon.Hide()
 
         BtnTerminer.Enabled = False
         BtnTerminer.Hide()
@@ -105,10 +122,7 @@ Public Class Form2
         grille = GenerateSudoku()
         ColorierRegions()
 
-        ' Définition de l'opacité souhaitée (entre 0 et 1)
         Dim nouvelleOpacite As Double = 0.6 ' Opacité à 60%
-
-        ' Appliquer l'opacité au panel
         Panel1.BackColor = Color.FromArgb(CInt(nouvelleOpacite * 255), Panel1.BackColor.R, Panel1.BackColor.G, Panel1.BackColor.B)
     End Sub
 
@@ -233,8 +247,9 @@ Public Class Form2
         Next
         TableLayoutPanelQuadrillage.Enabled = False
         BtnTerminer.Enabled = False
-        BtnIndice.Enabled = False
-        lblNbFoisIndice.Enabled = False
+        BtnIndice.Hide()
+        lblNbFoisIndice.Hide()
+        BtnPause.Hide()
         Timer.Stop()
         ColorierRegions()
     End Sub
@@ -258,6 +273,10 @@ Public Class Form2
             textBox.BackColor = Color.LightGreen
             textBox.ReadOnly = True
 
+            ' Supprimer le gestionnaire d'événements KeyPress seulement pour cette TextBox
+            RemoveHandler textBox.KeyPress, AddressOf TextBox_KeyPress
+
+            ' Vérifier si la grille est complète
             If grilleComplete() Then
                 BtnTerminer.Show()
             Else
@@ -267,6 +286,15 @@ Public Class Form2
             ' Désactiver le mode indice après avoir affiché un indice
             modeIndice = False
 
+            ' Réactiver l'édition des autres TextBoxes
+            For i As Integer = 0 To 8
+                For j As Integer = 0 To 8
+                    Dim tb As TextBox = GetTextBox(i, j)
+                    If tb IsNot Nothing AndAlso (String.IsNullOrEmpty(tb.Text) OrElse tb.BackColor = Color.Red) Then
+                        tb.ReadOnly = False
+                    End If
+                Next
+            Next
         Else
             ' Restaurer les couleurs des régions avant de les colorier en bleu
             RestaurerCouleurs()
@@ -282,19 +310,19 @@ Public Class Form2
             ' Colorier la colonne
             For i As Integer = 0 To 8
                 Dim tb As TextBox = GetTextBox(i, colonne)
-                If TypeOf tb Is TextBox AndAlso tb IsNot Nothing AndAlso tb.BackColor <> Color.Red AndAlso tb.BackColor <> Color.LightGreen Then
+                If tb IsNot Nothing AndAlso tb.BackColor <> Color.Red AndAlso tb.BackColor <> Color.LightGreen Then
                     tb.BackColor = Color.LightBlue
                 End If
             Next
 
-            ' Colorer la region
+            ' Colorer la région
             Dim debutLigne As Integer = (ligne \ 3) * 3
             Dim debutColonne As Integer = (colonne \ 3) * 3
 
             For i As Integer = debutLigne To debutLigne + 2
                 For j As Integer = debutColonne To debutColonne + 2
                     Dim tb As TextBox = GetTextBox(i, j)
-                    If TypeOf tb Is TextBox AndAlso tb IsNot Nothing AndAlso tb.BackColor <> Color.Red AndAlso tb.BackColor <> Color.LightGreen Then
+                    If tb IsNot Nothing AndAlso tb.BackColor <> Color.Red AndAlso tb.BackColor <> Color.LightGreen Then
                         tb.BackColor = Color.LightBlue
                     End If
                 Next
@@ -323,7 +351,6 @@ Public Class Form2
         Me.Close()
         Form1.Show()
 
-
         Dim nvScore As New Score With {
         .Nom = currentJoueur.ToUpper(),
         .MeilleurTemps = (tempsMax - tempsActuel),
@@ -345,7 +372,6 @@ Public Class Form2
 
         scores.SetValue(nvScore, nbEnregistrement)
         nbEnregistrement += 1
-
     End Sub
 
     Private Sub AfficherSudoku(grille As Integer(,), nbMax As Integer)
@@ -382,9 +408,9 @@ Public Class Form2
                         Dim tb As TextBox = GetTextBox(i, j)
                         If tb IsNot Nothing AndAlso tb.BackColor <> Color.Red AndAlso tb.BackColor <> Color.LightGreen Then
                             If (regionLigne + regionColonne) Mod 2 = 0 Then
-                                tb.BackColor = Color.LightGray
+                                tb.BackColor = Color.RosyBrown
                             Else
-                                tb.BackColor = Color.White
+                                tb.BackColor = Color.Snow
                             End If
                         End If
                     Next
@@ -415,7 +441,7 @@ Public Class Form2
         Timer.Stop()
         Dim formulairePause As New Pause()
         formulairePause.NbErreursRestantes = nbErreursPossibles
-        formulairePause.TempsRestant = tempsMax
+        formulairePause.TempsRestant = tempsActuel
         Me.Hide()
         formulairePause.ShowDialog()
         If formulairePause.DialogResult = DialogResult.OK Then
@@ -427,6 +453,31 @@ Public Class Form2
     Private Sub lblNbFoisIndice_Click(sender As Object, e As EventArgs) Handles lblNbFoisIndice.Click
         If nbErreursPossibles = 0 Then
             lblNbFoisIndice.Enabled = False
+        End If
+    End Sub
+
+    Private Sub BtnCouperSon_Click(sender As Object, e As EventArgs) Handles BtnCouperSon.Click
+        If musiqueActive = True Then
+            My.Computer.Audio.Stop()
+            musiqueActive = False
+        Else
+            MettreMusique()
+            musiqueActive = True
+        End If
+    End Sub
+
+    Private Sub MettreMusique()
+        Dim audioStream As System.IO.Stream = My.Resources.opNami
+
+        If audioStream IsNot Nothing Then
+            Dim tempPath As String = System.IO.Path.GetTempFileName()
+            Using fileStream As New System.IO.FileStream(tempPath, System.IO.FileMode.Create, System.IO.FileAccess.Write)
+                audioStream.CopyTo(fileStream)
+            End Using
+
+            My.Computer.Audio.Play(tempPath, AudioPlayMode.BackgroundLoop)
+        Else
+            MessageBox.Show("Le fichier audio n'est pas disponible.")
         End If
     End Sub
 End Class

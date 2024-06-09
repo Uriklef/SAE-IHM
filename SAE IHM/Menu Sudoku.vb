@@ -1,5 +1,4 @@
 Imports System.Drawing.Drawing2D
-Imports Excel = Microsoft.Office.Interop.Excel
 
 Public Class Form1
 
@@ -18,11 +17,12 @@ Public Class Form1
         BCreateurs.Size = New Size(30, 30)
 
         ' Définition de l'opacité souhaitée (entre 0 et 1)
-        Dim nouvelleOpacite As Double = 0.6 ' Opacité à 60%
+        Dim OpacitePanel As Double = 0.6 ' Opacité à 60%
+        Dim OpaciteLeaderBoard As Double = 0.75
 
         ' Appliquer l'opacité au panel
-        LRegle.BackColor = Color.FromArgb(CInt(nouvelleOpacite * 255), Panel1.BackColor.R, Panel1.BackColor.G, Panel1.BackColor.B)
-
+        LRegle.BackColor = Color.FromArgb(CInt(OpacitePanel * 255), Panel1.BackColor.R, Panel1.BackColor.G, Panel1.BackColor.B)
+        PLeaderBoard.BackColor = Color.FromArgb(CInt(OpaciteLeaderBoard * 255), PLeaderBoard.BackColor.R, PLeaderBoard.BackColor.G, PLeaderBoard.BackColor.B)
     End Sub
 
     Private Sub MettreMusique()
@@ -58,8 +58,9 @@ Public Class Form1
 
     Private Sub RemplieScore()
         LScores.Text = ""
-        LScores.Text = "  Joueurs  |   Temps  |   Difficulé" & vbCr & "-------------------------------------" & vbCr
+        LScores.Text = "  Joueur(s)  |   Temps  |   Difficulté" & vbCr & "-------------------------------------" & vbCr
         LScores.ForeColor = Color.FloralWhite
+        LScores.BackColor = Color.Transparent
         LBNoms.Items.Clear()
         LBMeilleursScores.Items.Clear()
         LBDifficulte.Items.Clear()

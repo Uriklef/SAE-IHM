@@ -47,8 +47,9 @@ Partial Class Pause
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.BackColor = System.Drawing.Color.Snow
+        Me.Label2.BackColor = System.Drawing.Color.Black
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.Snow
         Me.Label2.Location = New System.Drawing.Point(75, 139)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(144, 24)
@@ -58,8 +59,9 @@ Partial Class Pause
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.BackColor = System.Drawing.Color.Snow
+        Me.Label3.BackColor = System.Drawing.Color.Black
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.Snow
         Me.Label3.Location = New System.Drawing.Point(75, 188)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(167, 24)
@@ -80,8 +82,9 @@ Partial Class Pause
         'labelMinuteur
         '
         Me.labelMinuteur.AutoSize = True
-        Me.labelMinuteur.BackColor = System.Drawing.Color.Snow
+        Me.labelMinuteur.BackColor = System.Drawing.Color.Black
         Me.labelMinuteur.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labelMinuteur.ForeColor = System.Drawing.Color.Snow
         Me.labelMinuteur.Location = New System.Drawing.Point(237, 139)
         Me.labelMinuteur.Name = "labelMinuteur"
         Me.labelMinuteur.Size = New System.Drawing.Size(49, 24)
@@ -91,8 +94,9 @@ Partial Class Pause
         'lblNbErreursRestantes
         '
         Me.lblNbErreursRestantes.AutoSize = True
-        Me.lblNbErreursRestantes.BackColor = System.Drawing.Color.Snow
+        Me.lblNbErreursRestantes.BackColor = System.Drawing.Color.Black
         Me.lblNbErreursRestantes.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNbErreursRestantes.ForeColor = System.Drawing.Color.Snow
         Me.lblNbErreursRestantes.Location = New System.Drawing.Point(248, 188)
         Me.lblNbErreursRestantes.Name = "lblNbErreursRestantes"
         Me.lblNbErreursRestantes.Size = New System.Drawing.Size(21, 24)
@@ -110,7 +114,7 @@ Partial Class Pause
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.Color.Snow
+        Me.Panel1.BackColor = System.Drawing.Color.Black
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Location = New System.Drawing.Point(38, 123)
         Me.Panel1.Name = "Panel1"
@@ -121,7 +125,7 @@ Partial Class Pause
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.SAE_IHM.My.Resources.fond
+        Me.BackgroundImage = Global.SAE_IHM.My.Resources.Resources.fond
         Me.ClientSize = New System.Drawing.Size(370, 354)
         Me.Controls.Add(Me.lblNbErreursRestantes)
         Me.Controls.Add(Me.labelMinuteur)
@@ -132,6 +136,7 @@ Partial Class Pause
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "Pause"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Pause"
         Me.ResumeLayout(False)
         Me.PerformLayout()
